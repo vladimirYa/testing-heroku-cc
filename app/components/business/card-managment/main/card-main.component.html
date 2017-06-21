@@ -1,0 +1,106 @@
+<div class="card-main__head">
+    <div class="card-main__head-main">
+        <h1 class="card-main__heading bold">Card Management</h1>
+        <div class="button button_primary button_size_sm card-main__button card-main__button_settings" (click)="modalService.open('card-settings')">Settings</div>
+        <div class="card-main__search">
+            <div class="card-main__search-wrapper">
+                <input type="text" class="input input_search input_search-account" placeholder="Search account">
+                <img src="../../../../common/images/icons/search.png" alt="" class="search">
+            </div>
+            <div class="button button_primary card-main__button">New Account</div>
+        </div>
+    </div>
+    <div class="card-main__head-data-sector">
+        <div class="data-box card-main__data-sector_single card-main__data-sector">
+            <data-sector [heading]="'Total Cards'" [data]='totalCardsData' [isValueCurrency]='false'></data-sector>
+        </div>
+        <div class="data-box card-main__data-sector_single card-main__data-sector">
+            <data-sector [heading]="'Average ChargaScore'" [data]='totalCardsData' [isValueCurrency]='false'></data-sector>
+        </div>
+        <div class="data-box card-main__data-sector_multiple card-main__data-sector">
+            <data-sector [heading]="'Total Credits'" [data]='totalCredits' [isValueCurrency]='true'></data-sector>
+            <data-sector [heading]="'Credits Used'" [data]='creditsUsed' [isValueCurrency]='true'></data-sector>
+            <data-sector [heading]="'Credits Available'" [data]='creditsAvailable' [isValueCurrency]='true'></data-sector>
+        </div>
+        <div class="data-box card-main__data-sector_multiple card-main__data-sector">
+            <data-sector [heading]="'Average Interest Rate'" [data]='averageInterestRate' [isValueCurrency]='false'></data-sector>
+            <data-sector [heading]="'Interest Income'" [data]='interestIncome' [isValueCurrency]='true'></data-sector>
+        </div>
+    </div>
+</div>
+<div class="card-main__chart">
+    <div class="card-main__selects">
+        <select2 [id]='"card-chart-numbers"' [data]='cardChartSelectNumbers' (activeId)='readOptionNumber($event)' class='numbers'></select2>
+        <select2 [id]='"card-chart-dates"' [data]='cardChartSelectDates' (activeId)='readOptionDate($event)' class='dates'></select2>
+    </div>
+    <div class="card-main__card-buttons">
+        <div *ngFor='let cardButton of cardsData'>
+            <div *ngIf='cardButton.isAvailable' class="card-main__card-button" [ngStyle]="{'border-color': cardService.cardByType(cardButton.type).cardColor}" [routerLink]="['/business/card', cardButton.type]">
+                <img [src]="loadFlatCard(cardService.cardByType(cardButton.type).cardFlatImage)" alt=""> {{cardService.cardByType(cardButton.type).title | capitalize}}
+            </div>
+        </div>
+    </div>
+    <div class="card-main__chart-wrapper">
+        <div id="chart" (window:resize)='onResize($event)'></div>
+    </div>
+</div>
+<div class="card-main__table billing-managment__table-wrapper">
+    <table class="table">
+        <thead>
+            <th width='15%'>Card</th>
+            <th width='17%'>Credits Issued</th>
+            <th width='17%'>Credits Used</th>
+            <th width='17%'>Credits Available</th>
+            <th width='17%'>Average Rate</th>
+            <th width='17%'>Interest Income</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor='let card of cardsData' class='tr-parent'>
+                <td colspan="6" *ngIf='card.isAvailable'>
+                    <table class='card-main__table-inner'>
+                        <tr class='card-main__table-inner-row' [routerLink]="['/business/card', card.type]">
+                            <td width='15%'>
+                                <img [src]="loadFlatCard(cardService.cardByType(card.type).cardFlatImage)" alt=""> {{card.type | capitalize}}
+                            </td>
+                            <td width='17%'>{{card.credits_issued}}</td>
+                            <td width='17%'>{{card.credits_used | currency:'USD':true}}</td>
+                            <td width='17%'>{{card.credits_available | currency:'USD':true }}</td>
+                            <td width='17%'>{{card.average_rate}}%</td>
+                            <td width='17%'>{{card.interest_income | currency:'USD':true}}</td>
+                        </tr>
+                    </table>
+                </td>
+                <td colspan="6" *ngIf='!card.isAvailable'>
+                    <table class='card-main__table-inner'>
+                        <tr class='card-main__table-inner-row'>
+                            <td class='locked__wrapper'>
+                                <img [src]="loadFlatCard(cardService.cardByType(card.type).cardFlatImage)" alt=""> {{card.type | capitalize}}
+                                <div class="locked">
+                                    <img src="../../../../common/images/icons/locked.png" alt="">
+                                </div>
+                            </td>
+                            <td colspan='5'></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<modal-window id='card-settings' class='invisible card-settings'>
+    <h1 class="bold">Settings</h1>
+    <p class='card-settings__paragraph'>If you want approve automatically requests, please enter a minimum credit score and maximum credit limit. Any other requests will be approved manually as a "New Request".</p>
+    <div class="card-settings__inputs">
+        <div class="card-settings__input-wrapper">
+            <label for="" class="input__label bold">Minimum credit score</label>
+            <input type="text" class="input input_common" placeholder="E.g. 520">
+        </div>
+        <div class="card-settings__input-wrapper">
+            <label for="" class="input__label bold">Maximum credit limit</label>
+            <input type="text" class="input input_common" placeholder="$2000">
+        </div>
+    </div>
+    <div class="button button_primary">Save</div>
+    <div class="modal__close" (click)="modalService.close('card-settings')"></div>
+</modal-window>

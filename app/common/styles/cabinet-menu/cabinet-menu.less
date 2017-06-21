@@ -1,0 +1,96 @@
+@import (less) '../../mixins/flex-mixins';
+
+:host{
+    position: fixed;
+    // width: 12%;
+    min-width: 230px;
+    overflow: auto;
+    height: 100%;
+    background-color: #4c5e70;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    .flex-column-flex-start-stretch();
+    text-align: center;
+    font-size: 18px;
+
+    @media screen and (max-width: 1370px){
+        min-width: 170px;
+        font-size: 13px;
+    }
+}
+
+.cabinet-menu{
+    &__nav{
+        margin-top: 70px;
+        @media screen and (max-width: 1370px){
+            margin-top: 50px;
+        }
+        &-item{
+            text-decoration: none;
+            font-weight: 400;
+            color: #fff;
+            padding: 10px;
+            .flex-column-center();
+            box-shadow: inset 0 -1px 0 0 rgba(43, 55, 68, 0.87);
+            transition: 0.3s;
+            height: 80px;
+            &:hover{
+                box-shadow: inset 0 -100px 0 0 rgba(43, 55, 68, 0.87);
+            }
+            & img{
+                margin-bottom: 10px;
+                max-height: 40px;
+                @media screen and (max-width: 1370px){
+                    margin-bottom: 5px;
+                    max-height: 30px;
+                }
+            }
+            &.active{
+                background-color: rgb(43, 55, 68);
+            }
+            @media screen and (max-width: 1370px){
+                padding: 5px;
+                height: 60px;
+            }
+            &_unactive{
+                background-color: #515962;
+                box-sizing: content-box;
+                &:hover{
+                    box-shadow: inset 0 -1px 0 0 rgba(43, 55, 68, 0.87);
+                }
+            }
+        }
+    }
+    &__caption{
+        display: block;
+        margin: 10px auto;
+        padding: 10px 5px;
+        background-color: #3d4f60;
+        width: 80%;
+        color: #fff;
+        @media screen and (max-width: 1370px){
+            margin: 7px auto;
+            padding: 7px 5px;
+        }
+    }
+    &__common-data{
+        border-bottom: 1px solid rgba(43, 55, 68, 0.87);
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover{
+            box-shadow: inset 0 -300px 0 0 rgb(43, 55, 68);
+        }
+        & > .user-image_business{
+            margin-top: 20px;
+            max-height: 60px;
+            @media screen and (max-width: 1370px){
+                margin-top: 10px;
+                max-height: 30px;
+            }
+        }
+        .active &{
+            background-color: rgb(43, 55, 68);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<h1 class="bold">Payment Status</h1>
+<div class='date'>Apr 1 2017</div>
+<div class="chart__wrapper">
+    <div class='chart__controllers'>
+        <div class="chart__controllers_half">
+            <check-box *ngFor='let controller of firstControllers;'
+                    [checkBoxData]='controller'
+                    (fireChange)='readNewState($event)'
+                    class='donut__controller'>
+            </check-box>
+        </div>
+        <div class="chart__controllers_half">
+            <check-box *ngFor='let controller of secondControllers;'
+                    [checkBoxData]='controller'
+                    (fireChange)='readNewState($event)'
+                    class='donut__controller'>
+            </check-box>
+        </div>
+    </div>
+    <div class='donut-wrapper'>
+        <div id='donut' (window:resize)='onResize($event)'></div>
+    </div>
+</div>

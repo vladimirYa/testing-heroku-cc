@@ -1,0 +1,26 @@
+<div class="sign-up__box sign-up__second">
+    <img class='secure' src="../../../../common/images/icons/secure-icon.png" alt="">
+    <div class="step-counter">2</div>
+    <div class="sign-up__container">
+        <div class="input_wrapper">
+            <input #password type="password" class="input input_common input_sign-up" placeholder="Choose a password">
+        </div>
+        <div class="input_wrapper">
+            <input #repeatedPassword type="email" class="input input_common input_sign-up" placeholder="Repeat password">
+        </div>
+    </div>
+    <div class="sign-up__footer">
+        <div class="sign-up__footer-caption second">All fields are required</div>
+        <div class="sign-up__button step-counter" (click)='switchStep({
+            stepNumber: 2,
+            nextStep: 1,
+            userData:{
+                password: password.value,
+                repeatedPassword: repeatedPassword.value
+            } 
+        })'>Next</div>
+        <div class="sign-up__button step-counter sign-up__button_back" (click)='switchStepBack({
+            prevStep: 1
+        })'>Back</div>
+    </div>
+</div>

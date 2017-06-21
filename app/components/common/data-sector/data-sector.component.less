@@ -1,0 +1,30 @@
+@import (less) '../../../common/styles/variables';
+
+.data-sector{
+    &__data{
+        font-size: 16px;
+        margin-bottom: 7px;
+        &.difference{
+            margin-bottom: 0;
+            @media screen and (max-width: 1370px){
+                margin-bottom: 0px;
+            }
+        }
+        &_light{
+            font-size: 0.8em    ;
+            color: @main-font-color-lighter;
+        }
+        @media screen and (max-width: 1500px){
+            font-size: 14px;
+        }
+        @media screen and (max-width: 1370px){
+            // font-size: 13px;
+            margin-bottom: 4px;
+        }
+        .card-details__head-sector &{
+            @media screen and (max-width: 1370px){
+                margin-bottom: 7px;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'individual-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.less'],
+})
+
+export class ProfileComponent {
+    title = 'Profile'
+}

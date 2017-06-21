@@ -1,0 +1,44 @@
+@import (less) '../../../common/mixins/flex-mixins';
+@import (less) '../../../common/styles/variables';
+
+:host{
+    .flex-row-space-between-stretch();
+}
+.common-data{
+    
+    &_left.common-data_customer{
+        padding-right: 5px;
+        padding-left: 0px;
+        width: 75%;
+    }
+    &_right.common-data_customer{
+        padding-right: 0px;
+        padding-left: 5px;
+        width: 25%;
+    }
+    &_left{
+        padding-right: 5px;
+        width: 25%;
+    }
+    &_right{
+        padding-left: 5px;
+        width: 75%;
+    }
+    &__content{
+        color: @main-font-color;
+        @media screen and (max-width:1370px){
+            font-size: 14px;
+        }
+        padding: 10px;
+        &-wrapper{
+            .flex-row-space-between-flex-start();
+        }
+    }
+    &__date{
+        color: @main-font-color-lighter;
+        font-size: 14px;
+    }
+    &_item{
+        margin: 10px 0;
+    }
+}

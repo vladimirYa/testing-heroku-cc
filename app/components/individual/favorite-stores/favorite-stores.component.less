@@ -1,0 +1,120 @@
+@import (less) '../../../common/mixins/flex-mixins';
+@import (less) '../../../common/mixins/mixins';
+@import (less) '../../../common/styles/variables';
+
+
+:host{
+    .flex-column-flex-start-center();
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+canvas{
+    display: block;
+    margin: 5px 0;
+}
+.favorite-stores{
+    &__no-stores{
+        line-height: 80px;
+        background-color: #F0F3F6;
+        font-size: 26px;
+        margin: 20px 20px 0;
+    }
+    &__modal-find{
+        width: 800px;
+    }
+    &__paragraph{
+        line-height: 1.4;
+        padding: 20px;
+    }
+    &__cash-data{
+        display: table;
+        width: 100%;
+        &-item{
+            & > h1{
+                color: #2dc0e8;
+                margin-bottom: 5px;
+            }
+            display: table-cell;
+            text-align: center;
+        }
+    }
+    &__modal{
+        width: 800px;
+        margin-top: 20px;
+        & .button{
+            width: 90%;
+        }
+    }
+    &__store-card{
+        max-width: 90%;
+    }
+    &__heading{
+        margin: 20px 0;
+    }
+    &__stores{
+        .flex-row-center-stretch();
+        width: 95%;
+        &-item{
+            position: relative;
+            padding: 0 5px;
+            width: 25%;
+            min-height: 200px;
+            &:nth-child(2){
+                box-shadow: inset 2px 0 0 0 @profile-border-color, inset -1px 0 0 0 @profile-border-color;
+            }
+            &:nth-child(3){
+                box-shadow: inset 1px 0 0 0 @profile-border-color, inset -2px 0 0 0 @profile-border-color;
+            }
+        }
+    }
+    &__image-wrapper{
+        position: relative;
+        min-height: 50px;
+        @media screen and (max-width: 1370px){
+            min-height: 40px;
+        }
+        & > img{
+            .transform-center();
+            max-height: 100%;
+            max-width: 100%;
+            cursor: pointer;
+        }
+    }
+    &__locked{
+        position: absolute;
+        left: 1%;
+        top: 0;
+        width: 98%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        padding: 10px;
+    }
+    &__breakpoint{
+        .transform-center();
+        font-size: 30px;
+        font-weight: 600;
+        color: #fff;
+        @media screen and (max-width: 1300px){
+            font-size: 24px;
+        }
+    }
+}
+.button-wrapper{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 10px;
+    padding: 0 10px;
+}
+.modal{
+    &_get-access{
+        width: 500px;
+    }
+    &__paragraph{
+        padding: 30px 50px;
+        line-height: 1.2;
+    }
+}
+.heading_get-access{
+    font-size: 20px;
+}

@@ -1,0 +1,97 @@
+@import (less) '../../../../common/mixins/flex-mixins';
+@import (less) '../../../../common/styles/variables';
+
+:host{
+    // padding: 0 10px;
+    display: block;
+}
+.profile-view {
+    &_wrapper{
+        padding: 0 20px;
+    }
+    padding: 15px 0px;
+    width: 100%;
+    min-height: 60px;
+    min-width: 900px;
+    .flex-row-space-around-flex-start();
+
+    &__seciton {
+        padding: 10px;
+        min-height: 300px;
+        &.left {
+            text-align: center;
+            width: 25%;
+            min-width: 180px;
+            .flex-column-flex-start-center();
+            & img{
+                border-radius: 50%;
+                max-width: 130px;
+                margin-bottom: 30px;
+            }
+        }
+        &.center {
+            padding: 10px 30px;
+            width: 30%;
+            box-shadow: 3px 0 0 0 @profile-border-color, -3px 0 0 0 @profile-border-color;
+        }
+        &.right {
+            width: 45%;
+            padding: 10px 30px;
+        }
+    }
+    &__name{
+        margin-bottom: 30px;
+    }
+    &__data{
+        color: @main-font-color;
+        font-size: @main-font-size-under-1300px;
+        font-weight: 200;
+        min-width: 100px;
+        &.bold{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        &_heading{
+            margin-bottom: 70px;
+            min-width: 200px;
+        }
+        &-image{
+            margin-bottom: 40px;
+            .flex-row-flex-start-center();
+            & img{
+                margin-right: 15px;
+            }
+        }
+        &-wrapper{
+            // .flex-row-flex-start-flex-end();
+        }
+        &-section{
+            margin-right: 40px;
+
+        }
+        &-property{
+            margin-bottom: 30px;
+            line-height: 24px;
+            .flex-row-flex-start-center();
+            &_bottom{
+                margin-bottom: 0;
+            }
+        }
+        &-name{
+            color: @main-font-color;
+            font-size: @main-font-size-under-1300px;
+            font-weight: 600;
+            margin-right: 15px;
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                left: -8px;
+                top: 4px;
+                background-color:  rgba(45, 192, 232, 0.2);
+                width: @main-font-size-under-1300px;
+                height: @main-font-size-under-1300px;
+            }
+        }
+    }
+}

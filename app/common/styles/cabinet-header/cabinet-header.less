@@ -1,0 +1,43 @@
+@import (less) '../../mixins/mixins';
+@import (less) '../../mixins/flex-mixins';
+
+:host{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(53, 69, 85, 0.3);
+    z-index: 2;
+    .flex-row-space-between-center();
+    @media screen and (max-width: 1370px){
+        height: 50px;
+    }
+}
+.cabinet-header{
+    &__logo{
+        min-height: 70px;
+        background-color: #354656;
+        position: relative;
+        width: 12%;
+        min-width: 230px;
+        @media screen and (max-width: 1370px){
+            min-width: 170px;
+            min-height: 50px;
+        }
+        & img{
+            .transform-center();
+            @media screen and (max-width: 1370px){
+                max-width: 130px;
+            }
+        }
+    }
+    &__actions{
+        margin-right: 30px;
+        .flex-row-center();
+        & img{
+            cursor: pointer;
+        }
+    }
+}

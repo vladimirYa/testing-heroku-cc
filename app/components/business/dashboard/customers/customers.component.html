@@ -1,0 +1,62 @@
+<div class='customers'>
+    <div class="data-box customers__item customers__item_first">
+        <h1 class="bold">Customer Revenue</h1>
+        <div id="customersRevenueChart" (window:resize)='onResize($event)'></div>
+    </div>
+    <div class="grid__row">
+        <div class='customers__item customers__item_left'>
+            <div class="data-box customers__item">
+                <div class='customers__datas'>
+                    <h1 class="bold">Customer Growth Rate</h1>
+                    <div class='customers__data customers__data_date'>{{customersGrowthRate?.date}}</div>
+                    <div class='customers__data bold'>{{customersGrowthRate?.value_in_percent}}%</div>
+                    <div class="difference"
+                         [ngClass]='customersGrowthRate?.isIncreased ? "increased" : "decreased"'>
+                             {{customersGrowthRate?.difference}}%
+                    </div>
+                </div>
+                <div class='customers__datas'>
+                    <h1 class="bold">Total Customers</h1>
+                    <div class='customers__data customers__data_date'>{{customersTotal?.date}}</div>
+                    <div class='customers__data bold'>{{customersTotal?.value}}</div>
+                    <div class="difference"
+                         [ngClass]='customersTotal?.isIncreased ? "increased" : "decreased"'>
+                             {{customersTotal?.difference}}%
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='customers__item customers__item_right'>
+            <div class="data-box customers__item">
+                <h1 class='bold'>Customer Growth Rate</h1>
+                <div id="growthRateChart" (window:resize) = 'onGrowthRateResize($event)'></div>
+            </div>
+        </div>
+    </div>
+    <div class="grid__row">
+        <div class='customers__item customers__item_left'>
+            <div class="data-box customers__item">
+                <div class='customers__datas'>
+                    <h1 class="bold">Interest income</h1>
+                    <div class='customers__data customers__data_date'>{{interestIncome?.date}}</div>
+                    <div class='customers__data bold'>{{interestIncome?.value | currency:'USD':true}}</div>
+                    <div class="difference"
+                         [ngClass]='interestIncome?.isIncreased ? "increased" : "decreased"'>
+                             {{interestIncome?.difference}}%
+                    </div>
+                </div>
+                <div class='customers__datas'>
+                    <h1 class="bold">Average Interest Rate</h1>
+                    <div class='customers__data customers__data_date'>{{averageInterestRate?.date}}</div>
+                    <div class='customers__data bold'>{{averageInterestRate?.value}}%</div>
+                </div>
+            </div>
+        </div>
+        <div class='customers__item customers__item_right'>
+            <div class="data-box customers__item">
+                <h1 class='bold'>Interest income</h1>
+                <div id="interestIncomeChart" (window:resize)='onInterestIncomeResize($event)'></div>
+            </div>
+        </div>
+    </div>
+</div>

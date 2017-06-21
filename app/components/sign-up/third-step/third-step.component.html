@@ -1,0 +1,14 @@
+<div class="step-number">3</div>
+<img src="../../../common/images/icons/secure-icon.png" alt="" class="secure">
+<p class="paragraph">Add your bank account to make your monthly payments.</p>
+<button class="button button_banks" (click)="handler.open()"> Open Banks</button>
+<p class="paragraph">If you bank is not listed, please call us: <br> +1-650-353-5889 <br>
+    or email: contact@chargacard.com</p>
+<a routerLink="/sign-up" class="button button_back">Back</a>
+<script src="https://cdn.plaid.com/link/stable/v2/link-initialize.js"
+        data-client-name="My App"
+        data-form-id="plaid-link"
+        data-key="fcee2e9a5e9e424d3d8d8d8d50ebdb"
+        data-product="auth"
+        data-env="sandbox">
+</script>

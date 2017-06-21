@@ -1,0 +1,22 @@
+@import (less) '../variables';
+
+
+:host{
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: #F0F5F9;
+    color: @main-font-color;
+}
+.content-wrapper{
+    padding-top: 70px;
+    padding-left: 230px;
+    @media screen and (max-width: 1370px){
+        padding-left: 170px;
+        padding-top: 50px;
+    }
+    &_business{
+        min-width: 1200px;
+        padding-bottom: 20px;
+    }
+}

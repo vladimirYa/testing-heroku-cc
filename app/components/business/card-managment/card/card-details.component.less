@@ -1,0 +1,89 @@
+.card-details{
+    &__heading{
+        padding: 10px 20px;
+        margin: 20px 0;
+        font-size: 22px;
+        line-height: 34px;
+        @media screen and (max-width: 1370px){
+            line-height: 28px;
+            padding: 10px;
+        }
+        & > span {
+            cursor: pointer;
+        }
+    }
+    &__head{
+        display: flex;
+        margin-top: 35px;
+        padding: 0 20px;
+        @media screen and (max-width: 1370px){
+            padding: 0 10px;
+        }
+        &-sector{
+            padding-top: 6px;
+            display: flex;
+  
+            margin-right: 20px;
+            @media screen and (max-width: 1370px){
+                margin-right: 10px;
+            }
+            & .common-data {
+                margin: 0px 10px; 
+                @media screen and (max-width: 1260px){
+                    max-width: 80px;
+                }
+            }
+            & data-sector{
+                margin: 0px 10px;
+                display: block;
+                @media screen and (max-width: 1370px){
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    &__flat-card{
+        height: 1em;
+    }
+    &__card-image{
+        max-height: 80px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        @media screen and (max-width: 1260px){
+            max-height: 93px;
+        }
+    }
+    &__fluid-box{
+        padding: 10px 20px;
+        background-color: #fff;
+        margin-top: 20px;
+        text-align: center;
+        @media screen and (max-width:1370px){
+            margin-top: 10px;
+            padding: 10px;
+        }
+        & .card-main__selects{
+            text-align: left;
+            margin-left: 0;
+        }
+    }
+    &__download{
+        margin: 10px 0;
+        text-align: left;
+        & > img{
+            vertical-align: sub;
+        }
+    }
+    &__chart-wrapper{
+        height: 400px;
+        position: relative;
+    }
+}
+.common-data{
+    vertical-align: middle;
+    display: inline-block;
+}
+.table-icon{
+    vertical-align: middle;
+}

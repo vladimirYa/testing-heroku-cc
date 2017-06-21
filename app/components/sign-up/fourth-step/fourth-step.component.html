@@ -1,0 +1,10 @@
+<div class="step-number">4</div>
+<img src="../../../common/images/icons/secure-icon.png" alt="" class="secure">
+<div class="wrapper">
+    <input type="checkbox" class="custom-checkbox" id="autoPay" (change)="checkState()">
+    <label for="autoPay">Automatic payments: I allow ChargaCard to automatically withdraw funds from my bank account to pay my minimum payments on my ChargaCard.</label>
+    <br>
+    <input type="checkbox" class="custom-checkbox" id="agreement" (change)="checkState()">
+    <label for="agreement" >By creating an account, I agree to the ChargaCard Terms of Service and Electronic Disclosures</label>
+</div>
+<a routerLink="../fifth-step" *ngIf="nextStep" class="button button_next">Next</a>

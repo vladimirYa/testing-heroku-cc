@@ -1,0 +1,20 @@
+<div class="select-wrapper_date">
+    <select2 [id]='"billing-stack-chart-dates"'
+             [data]='stackChartSelectDates'
+             (activeId)='readOptionDate($event)'></select2>
+ </div>
+ <div class="select-wrapper_types">
+     <select2 [id]='"billing-stack-chart-types"'
+              [data]='stackChartSelectTypes'
+              (activeId)='readOption($event)'></select2>
+  </div>
+<div class="chart__wrapper">
+    <div id="chart" (window:resize)='onResize($event)'></div>
+</div>
+<div class="chart__controllers">
+    <check-box *ngFor='let controller of chartControllers'
+            [checkBoxData]='controller' class='chart__controller'
+            (fireChange) = 'readStackController($event)'>
+            <img [src]="loadFlatCard(controller.flatImg)" class='chart__card-img' alt=""> -
+        </check-box>
+</div>

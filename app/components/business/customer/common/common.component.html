@@ -1,0 +1,34 @@
+<div class="common-data_left common-data_customer">
+    <div class="data-box">
+        <div class="common-data__content common-data__content-wrapper">
+            <div class="common-data__content-item">
+                <h1 class='bold'>Credit Limit</h1>
+                <div class="common-data__date common-data_item">{{customerData.creditLimit.date}}</div>
+                <div class="bold">{{customerData.creditLimit.value | currency:'USD':true}}</div>
+                <div class="difference bold" [ngClass]="customerData.creditLimit.isIncreased ? 'increased' : 'decreased'">{{customerData.creditLimit.diff}}%</div>
+            </div>
+            <div class="common-data__content-item">
+                <h1 class='bold'>Credits Used</h1>
+                <div class="common-data__date common-data_item">{{customerData.creditsUsed.date}}</div>
+                <div class="bold">{{customerData.creditsUsed.value | currency:'USD':true}}</div>
+                <div class="difference bold" [ngClass]="customerData.creditsUsed.isIncreased ? 'increased' : 'decreased'">{{customerData.creditsUsed.diff}}%</div>
+            </div>
+            <div class="common-data__content-item">
+                <h1 class='bold'>Credits Available</h1>
+                <div class="common-data__date common-data_item">{{customerData.creditsAvailable.date}}</div>
+                <div class="bold">{{customerData.creditsAvailable.value | currency:'USD':true}}</div>
+                <div class="difference bold" [ngClass]="customerData.creditsAvailable.isIncreased ? 'increased' : 'decreased'">{{123}}%</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="common-data_right common-data_customer">
+    <div class="data-box">
+        <div class="common-data__content">
+            <h1 class='bold'>Interest Rate</h1>
+            <div class="common-data__date common-data_item">{{customerData.interestRate.date}}</div>
+            <div class="bold">{{customerData.interestRate.value | currency:'USD':true}}</div>
+            <div class="difference bold" [ngClass]="customerData.interestRate.isIncreased ? 'increased' : 'decreased'">{{customerData.interestRate.diff}}%</div>
+        </div>
+    </div>
+</div>

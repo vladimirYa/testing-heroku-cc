@@ -1,0 +1,68 @@
+@import (less) url('../../../common/mixins/flex-mixins.less');
+@import (less) url('../../../common/mixins/mixins.less');
+:host{
+  width: 100%;
+  height:370px;
+  display: block;
+  position: relative;
+  @media (min-width: 1500px) {
+    height: 420px;
+  }
+  color:#ffffff;
+  background-color:  #7d97ad;
+}
+.footer{
+  &_wrapper{
+    .flex-row-space-between-flex-start();
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+.heading{
+  cursor: pointer;
+  position: relative;
+  font-family: Assistant,sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin: 10px auto;
+  padding: 10px;
+  border-bottom:3px solid transparent ;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #2dc0e8;
+    visibility: hidden;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: .25s linear;
+  }
+  &:hover:before{
+    visibility: visible;
+    transform: scaleX(1);
+    color:  rgb(255, 255, 255);
+  }
+  @media (min-width: 1500px) {
+    font-size: 30px;
+  }
+  &_copyright{
+    font-size: 18px;
+    font-weight:300;
+    margin: 0 auto;
+    @media (min-width: 1500px) {
+      font-size: 24px;
+    }
+  }
+  &_title{
+    margin: 20px auto 10px;
+    font-weight: 700;
+
+  }
+}
+.copyright{
+  .transform-center-x();
+  bottom:15px;
+}

@@ -1,0 +1,107 @@
+// @import (less) '../';
+
+@import (less) "../../../../common/styles/variables";
+@import (less) "../../../../common/mixins/flex-mixins";
+
+
+:host{
+    display: block;
+    overflow: hidden;
+}
+.favorites{
+
+    &__left{
+        float: left;
+        width: 52%;
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+
+    &__right{
+        float:left;
+        width: 48%;
+        padding-left: 10px;
+        padding-right: 20px;
+    }
+    &__item{
+        padding: 10px;
+        overflow: hidden;
+        min-height: 425px;
+        & h1{
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
+    &__stores{
+        float: left;
+        border-right: 1px solid @profile-border-color;
+        width: 30%;
+        padding-right: 10px;
+        min-height: 370px;
+    }
+    &__empty{
+        background-color: #F0F5F9;
+        min-height: 370px;
+        position: relative;
+        & > span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            height: 1em;
+        }
+    }
+    &__products{
+        float: left;
+        width: 70%;
+        padding-left: 10px;
+        border-left: 1px solid @profile-border-color;
+        min-height: 370px;
+        @media screen and (max-width: 1370px){
+            font-size: 14px;
+        }
+    }
+    &__store{
+        max-width: 100%;
+        display: block;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        &-wrapper{
+            position: relative;
+            margin: 10px 0;
+            height: 80px;
+        }
+    }
+    &__product-image-wrapper{
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        border: 2px solid @profile-border-color;
+        min-width: 80px;
+        margin-right: 10px;
+        & > img{
+            max-width: 100%;
+            min-width: 100%;
+        }
+    }
+    &__product-wrapper{
+        .flex-row-flex-start-center();
+        margin: 10px 0;
+    }
+}
+#credit-limit-chart{
+    width: 100%;
+    height: 360px;
+}

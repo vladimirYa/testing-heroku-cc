@@ -1,0 +1,57 @@
+:host{
+    display: block;
+    margin-top: 15px;
+    @media screen and (max-width: 1370px){
+        margin-top: 5px;
+    }
+}
+.search{
+    vertical-align: middle;
+}
+.chart{
+    padding: 0 20px;
+    position: relative;
+    @media screen and (max-width: 1370px){
+        padding: 0 10px;
+    }
+    &__wrapper{
+        position: relative;
+        min-height: 450px;
+        @media screen and (max-width: 1370px){
+            min-height: 350px;
+        }
+    }
+    &__container{
+        position: absolute;
+        top: 60px;
+        min-height: 380px;
+        width: 100%;
+
+        @media screen and (max-width: 1370px){
+            top:50px;
+            min-height: 280px;
+        }
+    }
+    &__selects{
+        margin-left: 10px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 320px;
+        & > .dates{
+            width: 120px;
+        }
+        & > .types{
+            width: 190px
+        }
+    }
+}
+.billing-managment__table-wrapper {
+    background-color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    @media screen and (max-width: 1370px) {
+        padding: 10px;
+        margin-top: 10px;
+    }
+}

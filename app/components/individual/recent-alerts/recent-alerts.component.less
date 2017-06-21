@@ -1,0 +1,55 @@
+@import (less) '../../../common/mixins/flex-mixins';
+@import (less) '../../../common/styles/variables';
+
+.recent-alerts{
+
+    &__head{
+        margin: 10px 20px 10px;
+        .flex-row-space-between-center();
+        & img{
+            cursor: pointer;
+        }
+    }
+    &__clear{
+        color: @main-blue;
+        cursor: pointer;
+    }
+    &__alerts{
+        padding: 0 20px
+    }
+
+    &__alert{
+        .flex-row-space-between-center();
+        padding: 15px;
+        @media screen and (max-width: 1370px){
+            padding: 5px;
+        }
+        &:nth-child(2){
+            box-shadow: 0 2px 0 0 @profile-border-color, 0 -2px 0 0 @profile-border-color;
+        }
+    }
+    &__images{
+        width: 160px;
+        min-width: 160px;
+        @media screen and (max-width: 1370px){
+            width: 130px;
+            min-width: 130px;
+        }
+        .flex-row-space-between-center();
+    }
+    &__sender{
+        max-width: 120px;
+        @media screen and (max-width: 1370px){
+            width: 90px;
+            min-width: 90px;
+        }
+    }
+    &__text{
+        text-align: center;
+        padding: 10px;
+        line-height: 1.2;
+        @media screen and (max-width: 1370px){
+            font-size: 15px;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<h1 class="bold recent-activity__heading">Recent Activity</h1>
+<div class="recent-activity__content">
+    <div class="recent-activity__thumbnail" *ngFor='let product of getActivities()'>
+        <div class="recent-activity__stuff-wrapper">
+            <img [src]="loadImage(product.stuffImagePath)" class='recent-activity__stuff' alt="">
+        </div>
+        <div class="recent-activity__stuff-data">
+            <div class="recent-activity__data-common">
+                <div class="recent-activity__stuff-name">{{product.stuffName}}</div>
+                <div class="recent-activity__stuff-date">{{product.date}}</div>
+            </div>
+            <div class="recent-activity__vendor">
+                <img [src]="loadImage(product.storeImagePath)" alt="">
+            </div>
+            <div class="recent-activity__value">
+                <div class="recent-activity__value-montly">{{product.type}}</div>
+                <div class="bold">{{product.value | currency:'USD':true}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="button button_primary" (click)="viewMore()">View More</div>
+
+<modal-window id='full-activities' class='invisible'>
+    <div class="recent-activity__modal">
+        <h1 ad-host class="bold">All Transactions</h1>
+    </div>
+    <div class="modal__close" (click)="modalService.close('full-activities')"></div>
+</modal-window>

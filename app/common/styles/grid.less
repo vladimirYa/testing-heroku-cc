@@ -1,0 +1,25 @@
+.grid{
+    &__row{
+        overflow: hidden;
+    }
+    &__left,
+    &__right{
+        width: 50%;
+        padding: 10px;
+        @media screen and (max-width: 1370px){
+            padding: 5px;
+        }
+    }
+    &__left{
+        float:left;
+        &.dashboard__content_left{
+            padding-left: 0;
+        }
+    }
+    &__right{
+        float:right;
+        &.dashboard__content_right{
+            padding-right: 0;
+        }
+    }
+}

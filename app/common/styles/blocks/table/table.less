@@ -1,0 +1,172 @@
+@import (less) '../../variables';
+@import (less) '../../../mixins/mixins';
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+
+    & thead {
+        line-height: 50px;
+        background-color: #7B8DA0;
+        color: #fff;
+    }
+
+    & tr {
+        position: relative;
+        line-height: 40px;
+    }
+
+    .billing-managment__table-wrapper & {
+        text-align: center;
+
+        tr {
+            line-height: 40px;
+        }
+
+        td {
+            cursor: pointer;
+            vertical-align: middle;
+
+            & > img {
+                height: 0.8em;
+            }
+        }
+
+        td:first-child {
+            text-align: left;
+            padding-left: 30px;
+        }
+    }
+
+    .billing-managment__table-wrapper.card-main__table & {
+        td:first-child {
+            text-align: center;
+            padding-left: 0;
+        }
+    }
+
+    .billing-managment__table-wrapper.card-main__table & {
+        tr.card-main__table-inner-row {
+            & td:first-child {
+                text-align: left;
+                padding-left: 30px;
+            }
+        }
+        & tr.tr-parent:nth-child(odd) {
+            background-color: #F0F3F6;
+        }
+    }
+
+    & .billing-managment__table-wrapper.card-main__table .card-main__table-inner {
+        td:first-child {
+            text-align: center;
+            padding-left: 0;
+        }
+    }
+
+    .billing-managment__table-wrapper_card-details & {
+        td:first-child {
+            text-align: center;
+            padding-left: 0;
+        }
+
+        td:nth-child(2) {
+            text-align: left;
+            padding-left: 30px;
+        }
+    }
+
+    &_customer-products {
+        margin-top: 0;
+        text-align: center;
+
+        & tr {
+            line-height: 40px;
+            vertical-align: middle;
+        }
+
+        & td {
+            vertical-align: middle;
+        }
+
+        & th:last-child {
+            width: 80px;
+            position: relative;
+
+            & > img {
+                vertical-align: middle;
+            }
+        }
+
+        & .button_size_sm {
+            width: 60px;
+            font-size: 14px;
+            line-height: 30px;
+            height: 30px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
+
+    &_found-stores {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+
+        & .store-image {
+            max-width: 200px;
+            vertical-align: middle;
+        }
+
+        .button {
+            width: 120px;
+            font-size: 14px;
+        }
+    }
+
+    &_full-products {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+
+        & td {
+            position: relative;
+        }
+
+        & tr {
+            line-height: 80px;
+        }
+
+        & thead {
+            & tr {
+                line-height: 50px;
+            }
+        }
+
+        & .recent-activity__stuff-wrapper {
+            .transform-center();
+        }
+
+        & .recent-activity__vendor {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &.odd {
+        & tr:nth-child(odd) {
+            background-color: #F0F3F6;
+        }
+    }
+
+    &_view-more {
+        td {
+            vertical-align: middle;
+            padding: 10px 0;
+        }
+
+        tr {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,231 @@
+@import (less) '../../../../common/mixins/mixins';
+
+.card-main {
+    &__head {
+        padding: 0 20px;
+        @media screen and (max-width: 1370px) {
+            padding: 0 10px;
+        }
+
+        &-main {
+            overflow: auto;
+            padding: 10px 0;
+            margin: 20px 0;
+        }
+    }
+
+    &__heading {
+        font-size: 22px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    &__button {
+        display: inline-block;
+        margin: 0;
+        @media screen and (max-width:1370px) {
+            height: 36px;
+            line-height: 36px;
+            width: 100px;
+            font-size: 14px;
+        }
+
+        &_settings {
+            margin-top: 5px;
+            @media screen and (max-width:1370px) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__search {
+        display: flex;
+        float: right;
+        position: relative;
+
+        &-wrapper {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+
+            & > input {
+                margin: 0;
+                display: inline-block;
+                margin-right: 5px;
+                @media screen and (max-width:1370px) {
+                    height: 36px;
+                    line-height: 36px;
+                    font-size: 14px;
+                    min-width: 300px;
+                }
+            }
+
+            & > img.search {
+                right: 20px;
+            }
+        }
+    }
+
+    &__head-data-sector {
+        margin-top: 35px;
+        display: flex;
+        justify-content: flex-start;
+
+        & .data-box {
+            margin-right: 20px;
+            @media screen and (max-width: 1370px) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__data-sector {
+        & data-sector {
+            margin: 10px 20px 10px 10px;
+            display: block;
+            @media screen and (max-width: 1370px) {
+                margin-right: 10px;
+            }
+        }
+
+        &_single {
+            & data-sector {
+                margin-right: 20px;
+            }
+        }
+
+        &_multiple {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+
+    &__chart {
+        position: relative;
+        margin-top: 20px;
+        min-height: 500px;
+        background-color: #fff;
+        // padding: 1px;
+        @media screen and (max-width: 1370px) {
+            margin-top: 10px;
+            min-height: 400px;
+        }
+
+        &-wrapper {
+            position: absolute;
+            top: 120px;
+            min-height: 380px;
+            width: 100%;
+            @media screen and (max-width: 1370px) {
+                min-height: 280px;
+            }
+        }
+    }
+
+    // &__selects {
+    //     display: flex;
+    //     padding-top: 10px;
+    //     margin-left: 20px;
+    //     @media screen and (max-width: 1370px){
+    //         margin-left: 10px;
+    //     }
+    //     & > .numbers {
+    //         width: 140px;
+    //         margin-right: 10px;
+    //         @media screen and (max-width: 1370px){
+    //             width: 120px;
+    //         }
+    //     }
+
+    //     & > .dates {
+    //         width: 140px;
+    //         @media screen and (max-width: 1370px){
+    //             width: 120px;
+    //         }
+    //     }
+    // }
+
+    &__table {
+        background-color: #fff;
+        padding: 10px 23px;
+        margin-top: 20px;
+        @media screen and (max-width:1370px) {
+            padding: 10px 13px;
+            margin-top: 10px;
+        }
+
+        &-inner {
+            width: 100%;
+        }
+    }
+    &__card-buttons{
+        padding: 0 20px;
+        margin-top: 10px;
+        display: flex;
+        @media screen and (max-width: 1370px){
+            padding: 0 10px;
+        }
+    }
+    &__card-button{
+        display: inline-block;
+        min-width: 140px;
+        border: 1px solid #000;
+        .vertical-align-middle(46px);
+        padding: 0 10px;
+        margin-right: 10px;
+        cursor: pointer;
+        @media screen and (max-width: 1490px){
+            min-width: 130px;
+        }
+        @media screen and (max-width: 1370px){
+            min-width: 100px;
+            .vertical-align-middle(33px);
+            font-size: 14px;
+        }
+        & > img{
+            height: 0.8em;
+        }
+    }
+}
+.locked{
+    .transform-center-y();
+    right: 0;
+    background-color: #2dc0e8;
+    border-radius: 3px;
+    width: 36px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+
+    & > img{
+        .transform-center();
+    }
+    &__wrapper{
+        width: 150px;
+        position: relative;
+    }
+}
+.card-settings{
+    &__paragraph{
+        max-width: 80%;
+        line-height: 1.2;
+        margin: 30px auto;
+    }
+    &__input-wrapper{
+        width: 200px;
+        text-align: left;
+        & > .input__label{
+            font-size: 14px;
+        }
+    }
+    &__inputs{
+        margin-left: 10%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+    & .button{
+        margin-top: 30px;
+    }
+}

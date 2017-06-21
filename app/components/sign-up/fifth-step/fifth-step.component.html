@@ -1,0 +1,54 @@
+<div class="step-number">5</div>
+<img src="../../../common/images/icons/secure-icon.png" alt="" class="secure">
+<p class="paragraph">Increase your chances of getting approved</p>
+<div class="approved">
+    <input type="radio" id="fundingSource" name="approved" (change)="changeRadio($event)">
+    <label for="fundingSource">
+        <span>Add a backup funding source</span>
+        <img class="img" src="../../../common/images/icons/funding-sources.png" alt="">
+    </label>
+    <input type="radio" id="fico" name="approved" (change)="changeRadio($event)">
+    <label for="fico" >
+        <span>Enter your FICO score</span>
+        <img class="img" src="../../../common/images/icons/fico-icon.png" alt="">
+    </label>
+    <input type="radio" id="facebook" name="approved" (change)="changeRadio($event)">
+    <label for="facebook" >
+        <span>Link your Facebook or LinkedIn account</span>
+        <img class="img" src="../../../common/images/icons/facebook-in-icons.png" alt="">
+    </label>
+</div>
+
+<br>
+<div *ngIf="sources" class="funding-source">
+    <h1 class="heading_sources">Card number</h1>
+    <div class="card-number">
+        <input class="input_numbers" type="tel" placeholder="1345">
+        <input class="input_numbers" type="tel" placeholder="2949">
+        <input class="input_numbers" type="tel" placeholder="4183">
+        <input class="input_numbers" type="tel" placeholder="9093">
+    </div>
+    <div class="card-date">
+        <h1 class="heading_sources">Expiration date</h1>
+        <input class="input_numbers" type="tel" placeholder="06">
+        <input class="input_numbers" type="tel" placeholder="2025">
+    </div>
+    <div class="card-cvv">
+        <h1 class="heading_sources">CVV</h1>
+        <input class="input_numbers input_numbers_cvv" type="tel" placeholder="249">
+    </div>
+    <div class="clear"></div>
+    <input type="checkbox" class="custom-checkbox" id="credit-card">
+    <label for="credit-card" >I allow ChargaCard to automatically withdraw funds from my credit card. <br>
+        (Monthly payments for purchased products).</label>
+</div>
+<div *ngIf="fico" class="fico">
+    <h1 class="heading_sources">FICO XD</h1>
+    <input class="input_numbers" type="tel" placeholder="1234">
+</div>
+<div *ngIf="social" class="facebook-in">
+    <a class="social-button" href="https://www.facebook.com/" target="_blank"><img class="img_fluid" src="images/facebook-button.png" alt=""></a>
+    <a class="social-button" href="https://www.linkedin.com/" target="_blank"><img class="img_fluid" src="images/linkedin-button.png" alt=""></a>
+</div>
+<a routerLink="../fourth-step" class="button button_back">Back</a>
+<a routerLink="../sixth-step" class="button button_next">Confirm</a>

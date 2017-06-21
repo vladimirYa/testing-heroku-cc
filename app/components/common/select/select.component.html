@@ -1,0 +1,14 @@
+<div class="select" [id]='id'>
+    <div class="select__list-item select__list-item_active" [id]='data.active.id'>
+        {{data.active.text}}
+        <img src="../../../common/images/icons/up-arrow.png" alt="">
+    </div>
+    <ul class='select__list'>
+        <li class='select__list-item'
+            *ngFor='let option of data.options'
+            [id]='option.id'
+            (click)='emitActive(option.id)'>
+            {{option.text}}
+        </li>
+    </ul>
+</div>

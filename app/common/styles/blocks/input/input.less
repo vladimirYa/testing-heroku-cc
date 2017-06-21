@@ -1,0 +1,105 @@
+@import (less) '../../../mixins/mixins';
+@import (less) '../../variables';
+
+.input {
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    &::-webkit-input-placeholder {
+        font-style: italic;
+    }
+
+    &:-moz-placeholder {
+        font-style: italic;
+    }
+
+    &::-moz-placeholder {
+        font-style: italic;
+    }
+
+    &:-ms-input-placeholder {
+        font-style: italic;
+    }
+    &_common{
+        border: 1px solid #c7c7c7;
+        display: block;
+        width: 100%;
+        padding: 0 10px;
+        .vertical-align-middle(40px);
+    }
+    &__label{
+        display: block;
+        margin-bottom: 10px;
+        &_space{
+            margin-top: 30px;
+        }
+    }
+    &_textarea{
+        resize: none;
+        border: 1px solid #c7c7c7;
+        height: 200px;
+        width: 100%;
+        padding: 10px;
+
+    }
+    &_individual {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #c7c7c7;
+        padding: 0 10px;
+        .vertical-align-middle(60px);
+        @media screen and (max-width: 1370px) {
+            .vertical-align-middle(46px);
+        }
+    }
+
+    &-search-wrapper {
+        width: 95%;
+        position: relative;
+    }
+
+    &_search {
+        border: 1px solid #c7c7c7;
+        padding-right: 40px;
+        & + .search {
+            .transform-center-y();
+            right: 10px;
+        }
+
+        &-account {
+            .vertical-align-middle(40px);
+            margin-right: 20px;
+            min-width: 350px;
+            padding: 5px 10px;
+            padding-right: 45px;
+            @media screen and (max-width: 1300px){
+                min-width: 300px;
+            }
+
+            &_wrapper{
+                position: relative;
+            }
+            & + .search{
+                width: 20px;
+                right: 40px;
+            }
+        }
+    }
+    &_dashboard-item_wrapper{
+        margin-right: 10px;
+        margin-top: 10px;
+        & .input_search{
+            width: 100%;
+            .vertical-align-middle(40px);
+            padding: 5px 40px 5px 5px;
+
+        }
+        position: relative;
+        width: 250px;
+    }
+    &__search-wrapper{
+        width: 250px;
+        position: relative;
+    }
+}

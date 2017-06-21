@@ -1,0 +1,17 @@
+<!-- <div class="recent-alerts data-box"> -->
+    <div class="recent-alerts__head">
+        <img src='../../../common/images/icons/refresh.png' class="recent-alerts__refresh-alerts">
+        <h1 class="recent-alerts__heading bold">Recent Alerts</h1>
+        <div class="recent-alerts__clear bold">Clear all</div>
+    </div>
+    <div class="recent-alerts__alerts">
+        <div *ngFor = 'let alert of getAlerts()' class="recent-alerts__alert">
+            <div class="recent-alerts__images">
+                <img [src]="loadImg(alert.image)" class='recent-alerts__sender' alt="">
+                <img src="../../../common/images/icons/message.png" alt="">
+            </div>
+            <div class="recent-alerts__text">{{alert.alert}}</div>
+        </div>
+    </div>
+    <div class="button button_primary">View more</div>
+<!-- </div> -->

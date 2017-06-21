@@ -1,0 +1,25 @@
+:host{
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+}
+#scale{
+    display: block;
+    margin: 0 auto;
+}
+.scale{
+    &__data{
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%);
+    }
+    &__score{
+        font-size: 22px;
+        @media screen and (max-width: 1370px){
+            font-size: 18px;
+        }
+    }
+}

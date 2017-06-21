@@ -1,0 +1,16 @@
+<div class="pagination__count">
+    <div *ngFor="let amount of amounts" [class]="amount==countOfItems?'count__number active':'count__number'" (click)="setAmount(amount)">{{amount}}</div>
+</div>
+<table class="table table_found-stores odd">
+    <thead>
+    <th *ngFor="let column of tableTitles" [class]="tableSort.selectedClass(column.variable)" (click)="reSort(column)">{{column.text}}</th>
+    </thead>
+    <tbody>
+    <tr *ngFor='let item of finalList '>
+        <td *ngFor="let column of tableTitles" class="cell" [innerHTML]="item | filter:column"></td>
+    </tr>
+    </tbody>
+</table>
+<div class="pagination__count">
+    <div *ngFor="let page of pages" [class]="page==activePage?'page__number active':'page__number'" (click)="setPage(page)" >{{page}}</div>
+</div>

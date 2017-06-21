@@ -1,0 +1,65 @@
+<h1 class='bold increase-score__heading'>Increase your ChargaScore</h1>
+<div class="increase-score__content">
+    <div class="increase-score__cards grid__row" *ngIf='!isBlack'>
+        <div class="increase-score__active-card grid__left">
+            <h1 class="increase-score__title">You have a {{activeCard.title | uppercase}} Card</h1>
+            <img [src]="loadImg(activeCard.cardImage)" alt="">
+        </div>
+        <div class="increase-score__next-card grid__right">
+            <h1 class="increase-score__title">{{pointsToNextCard}} points to get {{nextCard.title | uppercase}} Card</h1>
+            <img [src]="loadImg(nextCard.cardImage)" alt="">
+            <div class="button button_primary">Make a payment</div>
+        </div>
+    </div>
+    <div class="increase-score__cards" *ngIf='isBlack'>
+        <h1 class="increase-score__title">You have a {{activeCard.title | uppercase}} Card</h1>
+        <img [src]="loadImg(activeCard.cardImage)" class='increase-score__card-black' alt="">
+    </div>
+    <p class="increase-score__paragraph">You can also increase your score by adding a <span class="underline-dashed" (click)="modalService.open('backup')">backup payment method</span>.
+    <br>
+    Please verify your account to increase your ChargaScore:
+    </p>
+    <div class="grid__row increase-score__verification">
+        <div class="grid__left">
+            <h1 class="increase-score__title">Primary Funding Source</h1>
+            <div class="increase-score__bank-verify">
+                <img src="../../../common/images/icons/citibank.png" alt="">
+                <div class="increase-score__verified">
+                    Verified
+                    <div class="check"></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid__right increase-score__border">
+            <h1 class="increase-score__title">Backup Payment Method</h1>
+            <div class="button button_primary button_size_sm">Verify</div>
+        </div>
+    </div>
+</div>
+<modal-window id="backup" class="invisible">
+    <div class="increase-score__modal">
+        <h1 class='bold'>What is my backup payment method?</h1>
+        <p class='increase-score__modal-paragraph'>
+            When you don’t have enough money in your bank account to make a payment, the merchant will debit from your backup funding source. You can choose which backup payment method you prefer and set it as your "primary funding source".
+        </p>
+        <p class='increase-score__modal-paragraph'>
+            If your payment can’t be completed using the payment funding source, we willl use your backup funding source.
+        </p>
+        <p class='increase-score__modal-paragraph'>
+            To change the backup payment method:
+        </p>
+        <p class='increase-score__modal-paragraph'>
+            1. Log in to your ChargaCard account. <br>
+            2. Go to your Profile page and click on “Payment Method” <br>
+            3. You can see all your different payment methods (primary and backups) <br>
+            4. To add a new payment method, click on “Add Payment Method” <br>
+        </p>
+        <p class='increase-score__modal-paragraph'>
+            After adding your payment method you can decide which payment method you prefer to use as your primary payment source.
+        </p>
+        <p class='increase-score__modal-paragraph'>
+            <span class='important bold'>Important:</span> It’s a good idea to make sure that you have enough money in your bank account before choosing it as your payment method. Many banks charge fees when you try to pay with your bank but don’t have enough money in your account.
+        </p>
+    </div>
+    <div class="modal__close" (click)="modalService.close('backup')"></div>
+</modal-window >

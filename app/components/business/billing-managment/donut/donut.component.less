@@ -1,0 +1,53 @@
+@import (less) "../../../../common/styles/variables";
+@import (less) "../../../../common/mixins/flex-mixins";
+@import (less) "../../../../common/mixins/mixins";
+
+:host{
+    display: block;
+    padding: 10px;
+    min-height: 500px;
+    position: relative;
+
+    @media screen and (max-width: 1370px){
+        min-height: 230px;
+    }
+}
+.date{
+    color: @main-font-color-lighter;
+    font-size: 14px;
+    margin: 7px 0;
+    @media screen and (max-width: 1370px){
+        font-size: 12px;
+        margin: 10px 0;
+    }
+}
+.donut-wrapper{
+    position: relative;
+    height: 260px;
+    @media screen and (max-width: 1370px){
+        .transform-center-y();
+        right: 30px;
+        height: 180px;
+        width: 180px;
+    }
+}
+.chart {
+    &__controllers{
+        @media screen and (max-width: 1370px){
+            height: 180px;
+            width: 40%;
+            .flex-row-space-between-stretch();
+        }
+        &_half{
+            .flex-column-space-around-flex-start();
+        }
+    }
+    &__wrapper{
+        // @media screen and (max-width: 1370px){
+        //     display: flex;
+        //     flex-direction: row;
+        //     justify-content: space-between;
+        //     align-items: flex-start;
+        // }
+    }
+}

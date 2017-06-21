@@ -1,0 +1,38 @@
+@import (less) '../../../common/mixins/flex-mixins';
+@import (less) '../../../common/mixins/mixins';
+@import (less) '../../../common/styles/variables';
+.pagination__count{
+    width: 95%;
+    margin: 15px auto 10px;
+    .flex-row-end();
+    color: rgb(124,141,159);
+  .count__number, .page__number{
+    margin-right: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .count__number{
+    width: 20px;
+    .vertical-align-middle(20px);
+    &.active{
+      color:@main-blue;
+    }
+  }
+  .page__number{
+    .vertical-align-middle(30px);
+    width: 30px;
+    border-radius: 50%;
+    &.active{
+      background-color: @main-blue;
+      color: #ffffff;
+    }
+    &:hover:not(.active){
+      color: @main-blue;
+    }
+  }
+}
+.cell{
+  position: relative;
+  vertical-align: middle;
+}

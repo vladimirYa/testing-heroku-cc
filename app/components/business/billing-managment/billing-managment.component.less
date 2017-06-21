@@ -1,0 +1,97 @@
+@import (less) '../../../common/mixins/flex-mixins';
+@import (less) '../../../common/mixins/mixins';
+
+.anchor{
+    cursor: pointer;
+}
+.billing-managment{
+    &__data-sector{
+        .flex-row-flex-start-flex-start();
+        & .display_block:not(:last-child){
+            margin-right: 16%;
+            @media screen and (max-width: 1300px){
+                margin-right: 14%;
+            }
+        }
+    }
+    &__head{
+        margin: 20px 0;
+        padding: 10px 20px;
+        height: 60px;
+        box-sizing: content-box;
+        .flex-row-space-between-center();
+        @media screen and (max-width: 1370px){
+            margin: 20px 0;
+            padding: 10px;
+            height: 40px;
+        }
+    }
+    &__heading{
+        font-size: 22px;
+    }
+    &__search{
+        position: relative;
+        width: 250px;
+        & > .input{
+            width: 100%;
+            padding: 5px;
+            .vertical-align-middle(40px);
+        }
+    }
+    &__content{
+        padding: 0 20px;
+        & .grid__left{
+            padding-left: 0
+        }
+        & .grid__right{
+            padding-right: 0
+        }
+        &-item{
+            padding: 10px;
+            @media screen and (max-width: 1370px){
+                padding: 5px;
+            }
+        }
+        @media screen and (max-width: 1370px){
+            padding: 0 10px;
+        }
+    }
+    // &__charts{
+    //     padding: 10px 20px;
+    //     @media screen and (max-width: 1370px){
+    //         padding: 5px 10px;
+    //     }
+    // }
+    // &__chart{
+    //     float: left;
+    //     &_stack-bar{
+    //         width: 80%;
+    //         padding-right: 10px;
+    //         @media screen and (max-width: 1370px){
+    //             padding-right: 0px;
+    //             width: 100%;
+    //         }
+    //     }
+    //     &_donut{
+    //         width: 20%;
+    //         padding-left: 10px;
+    //         @media screen and (max-width: 1370px){
+    //             padding-left: 0px;
+    //             margin-top: 10px;
+    //             width: 100%;
+    //         }
+    //         & .data-box{
+    //             padding-top: 10px;
+    //         }
+    //     }
+    // }
+    // &__table-wrapper{
+    //     background-color: #fff;
+    //     padding: 10px 20px;
+    //     margin-top: 20px;
+    //     @media screen and (max-width: 1370px){
+    //         padding: 10px;
+    //         margin-top: 10px;
+    //     }
+    // }
+}

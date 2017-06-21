@@ -1,0 +1,9 @@
+<div class="check-box"
+    [ngClass]="checkBoxData?.isActive ? 'active' : ''"
+    (click)='toggle(checkBoxData?.name)'
+    [id]='checkBoxData?.name'>
+    <div class="check-box__trigger"></div>
+    <div class="check-box__label">
+        <ng-content></ng-content> {{checkBoxData?.title}}
+    </div>
+</div>

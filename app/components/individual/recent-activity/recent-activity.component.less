@@ -1,0 +1,103 @@
+@import (less) '../../../common/styles/variables';
+@import (less) '../../../common/mixins/mixins';
+@import (less) '../../../common/mixins/flex-mixins';
+
+:host{
+    margin-top: 10px;
+}
+* /deep/ .table-recent-activity{
+    &__stuff-wrapper{
+        overflow: hidden;
+        .flex-row-flex-start-center();
+        width:70%;
+        margin: 0 auto;
+        & .table-recent-activity__stuff{
+            width: 70px;
+            height: 70px;
+            border-radius: 35px;
+            border: 1px solid #d7d7d7;
+            margin: 5px 0;
+            margin-right: 20px;
+        }
+    }
+    &__vendor{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        & > img{
+            .transform-center()
+        }
+    }
+}
+.recent-activity{
+    &__value{
+        text-align: right;
+        min-width: 100px;
+        &-montly{
+            margin-bottom: 5px;
+            color: #2dc0e8;
+            font-size: 12px;
+        }
+    }
+
+    &__heading{
+        margin: 20px 0;
+        text-align: center;
+    }
+    &__thumbnail{
+        width: 90%;
+        display: block;
+        margin: 10px auto;
+        position: relative;
+        min-height: 70px;
+        padding: 10px 0;
+        @media screen and (max-width: 1370px){
+            min-height: 60px;
+        }
+    }
+    &__stuff-wrapper{
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        left: 0;
+        top:0;
+        border-radius: 35px;
+        border: 1px solid #d7d7d7;
+        overflow: hidden;
+        @media screen and (max-width: 1370px){
+            width: 60px;
+            height: 60px;
+        }
+        & .recent-activity__stuff{
+            max-width: 100%;
+            max-height: 100%;
+            .transform-center();
+        }
+    }
+    &__stuff-data{
+        padding-left: 80px;
+        .flex-row-space-between-flex-start();
+    }
+    &__vendor{
+        width: 100%;
+        & > img{
+            display: block;
+            margin: 0 auto;
+            max-height: 70px;
+        }
+    }
+    &__stuff-date{
+        color: #627d97;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    &__data-common{
+        min-width: 200px;
+        @media screen and (max-width: 1370px){
+            min-width: 150px;
+        }
+    }
+    &__modal{
+        width: 900px;
+    }
+}

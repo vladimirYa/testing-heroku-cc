@@ -1,0 +1,12 @@
+<nav class='cabinet-menu__nav'>
+    <a routerLink='profile' class='link' routerLinkActive="active">
+        <div class='cabinet-menu__common-data'>
+            <img src="../../../common/images/drag-razer.png" alt="" class='user-image_business'>
+            <div class='cabinet-menu__caption'>{{businessUser.name}}</div>
+        </div>
+    </a>
+    <a *ngFor="let menuItem of menuItems" [routerLink]=menuItem.routerLink routerLinkActive="active" class='cabinet-menu__nav-item'>
+        <img [src]="loadImg(menuItem.imageName)" alt="">
+        {{menuItem.text}}
+    </a>
+</nav>

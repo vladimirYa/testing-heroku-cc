@@ -1,0 +1,48 @@
+@import (less) '../../../../common/styles/variables';
+
+.customers{
+    position: relative;
+    margin-top: 10px;
+    &__item{
+        position: relative;
+        padding: 10px;
+        min-height: 400px;
+        margin-top: 20px;
+        &_first{
+            margin-top: 0;
+        }
+        &_left{
+            width: 25%;
+            float: left;
+            padding-left: 0;
+            padding-top: 0;
+            & .customers__item{
+                margin-top: 0;
+            }
+        }
+        &_right{
+            width:75%;
+            float: right;
+            padding-right: 0;
+            padding-top: 0;
+            & .customers__item{
+                margin-top: 0;
+            }
+        }
+    }
+    &__data{
+        margin-bottom: 5px;
+        &_date{
+            color: @main-font-color-lighter;
+            font-size: 14px;
+        }
+    }
+    &__datas:first-child{
+        margin-bottom: 100px;
+    }
+    &__datas{
+        & > h1{
+            margin-bottom: 5px;
+        }
+    }
+}

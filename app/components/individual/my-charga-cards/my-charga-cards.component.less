@@ -1,0 +1,40 @@
+.my-cc{
+    padding: 0 20px;
+    @media screen and (max-width: 1370px){
+        padding: 0 10px;
+    }
+    &__content{
+        padding: 10px;
+        text-align: center;
+    }
+    &__stores{
+        overflow: hidden;
+        &-section{
+            position: relative;
+            float: left;
+            min-height: 410px;
+            width: 12.5%;
+            box-shadow: inset 1px 0px 0 0 #f0f0f0, inset -1px 0px 0 0 #f0f0f0;
+            & > .button{
+                position: absolute;
+                left:50%;
+                transform: translateX(-50%);
+                bottom: 0;
+            }
+        }
+    }
+    &__store{
+        padding: 10px;
+        height: 60px;
+        position: relative;
+        & > img{
+            max-width: 90%;
+            max-height: 40px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%)
+        }
+    }
+    
+}

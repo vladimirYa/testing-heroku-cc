@@ -1,0 +1,21 @@
+@import (less) '../../../../common/mixins/flex-mixins';
+
+:host{
+    position: relative;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 455px;
+    box-sizing: border-box;
+    @media screen and (max-width: 1300px){
+        min-height: 425px;
+    }
+}
+
+.dashboard-item{
+    &__head{
+        .flex-row-space-between-center();
+    }
+    &__body{
+        margin-top: 10px;
+    }
+}

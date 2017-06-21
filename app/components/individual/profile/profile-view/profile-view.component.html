@@ -1,0 +1,41 @@
+<div class="profile-view_wrapper">
+    <div class='profile-view data-box'>
+        <div class="profile-view__seciton left">
+            <img [src]="loadImg('photo')" alt="">
+            <div class="profile-view__data bold profile-view__name">{{userData.name}} {{userData.surname}}</div>
+            <div class="profile-view__data">{{userData.date}}</div>
+        </div>
+        <div class="profile-view__seciton center">
+            <h1 class='profile-view__data profile-view__data_heading bold'>Personal information</h1>
+            <div class="profile-view__data-image">
+                <img src="../../../../common/images/icons/mail.png" alt="email">
+                <div class="profile-view__data">{{userData.email}}</div>
+            </div>
+            <div class="profile-view__data-image">
+                <img src="../../../../common/images/icons/phone.png" alt="number">
+                <div class="profile-view__data">{{userData.phoneNumber}}</div>
+            </div>
+        </div>
+        <div class="profile-view__seciton right">
+            <h1 class='profile-view__data profile-view__data_heading bold'>Address information</h1>
+            <div class="profile-view__data-wrapper">
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">Street:</div>
+                    <div class="profile-view__data">{{userData.street}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">State:</div>
+                    <div class="profile-view__data">{{userData.state}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">City:</div>
+                    <div class="profile-view__data">{{userData.city}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">Zip:</div>
+                    <div class="profile-view__data">{{userData.zip}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

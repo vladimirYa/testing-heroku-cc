@@ -1,0 +1,345 @@
+<div class="head">
+    <h1 class='bold'><span routerLink='/business/customers' class='bold'>Customers</span>
+    -> {{customerData.name | capitalize}} {{customerData.surname | capitalize}}</h1>
+
+</div>
+<div class="customer_content">
+    <div class="customer_content_left">
+        <div class="customer_content-item data-box">
+            <div class="main-data">
+                <div class="main-data__user-photo-wrapper">
+                    <img src="../../../common/images/ruth.png" alt="" class='main-data__user-photo'>
+                </div>
+                <div class="main-data__common">
+                    <div class="main-data__name">{{customerData.name | capitalize}} {{customerData.surname | capitalize}}</div>
+                    <div class="main-data__card-title">{{customerCard.title | capitalize}} Card</div>
+                    <div class="main-data__score">ChargaScore {{customerData.score}}</div>
+                    <div class="difference" [ngClass]="customerData.isIncreased ? 'increased' : 'decreased'">{{customerData.difference}}%</div>
+                </div>
+                <img [src]='loadImg(customerCard.cardImage)' class="main-data__card">
+            </div>
+            <div class="main-data__data-image">
+                <div class="main-data__data-image-key bold">
+                    <img src="../../../common/images/icons/phone.png" alt=""> Phone number
+                </div>
+                {{customerData.phoneNumber}}
+            </div>
+            <div class="main-data__data-image">
+                <div class="main-data__data-image-key bold">
+                    <img src="../../../common/images/icons/message.png" alt=""> Email
+                </div>
+                {{customerData.email}}
+            </div>
+            <div class="main-data__data-image">
+                <div class="main-data__data-image-key bold">
+                    <img src="../../../common/images/icons/citibank.png" alt="">
+                </div>
+                <div class="main-data__verified">
+                    Verified
+                    <div class="check"></div>
+                </div>
+            </div>
+        </div>
+        <chat [businessData]='businessData' [individualData]='customerData' class='data-box display_block'></chat>
+    </div>
+    <div class="customer_content_right">
+        <common class="" [customerData]='customerData'></common>
+        <recent-activity [recentActivities]='customerData?.recentActivities' class="data-box display_block"></recent-activity>
+    </div>
+</div>
+<div class="customer_content_fluid">
+    <table class="table table_customer-products odd">
+        <thead>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Previous Balance</th>
+            <th>Payments</th>
+            <th>New Balance</th>
+            <th>
+                <img src="../../../common/images/icons/search-white.png" alt="">
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor='let product of products'>
+                <td>
+                    {{product.date}}
+                </td>
+                <td>
+                    <div class="customer__product">
+                        <div class="customer__product-image-wrapper">
+                            <img [src]="loadProductImage(product.productImagePath)" class='customer__product-image' alt="">
+                        </div>
+                        {{product.product}}
+                    </div>
+                </td>
+                <td>{{product.amount | currency:'USD':true}}</td>
+                <td>{{product.previousBalance | currency:'USD':true}}</td>
+                <td>{{product.payments | currency:'USD':true}}</td>
+                <td>{{product.newBalance | currency:'USD':true}}</td>
+                <td>
+                    <div class="button button_primary button_size_sm">Refund</div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<favorite [customerData]='customerData' [chartPoints]='customerData.points'></favorite>
+
+<div class="customer__statements">
+    <h1 class='bold'>Customer Statements</h1>
+
+    <div class="customer__statements_left data-box">
+        <div class="customer__statements-item">
+            <h1 class='bold'>Net Revenue MTD</h1>
+            <div class="customer__statements_date">
+                {{customerData.netRevenue.mtd.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.netRevenue.mtd.value | currency:"USD":true}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.netRevenue.mtd.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.netRevenue.mtd.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.netRevenue.mtd.difference}}%
+            </div>
+        </div>
+        <div class="customer__statements-item">
+            <h1 class='bold'>Last Month</h1>
+            <div class="customer__statements_date">
+                {{customerData.netRevenue.lastMonth.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.netRevenue.lastMonth.value | currency:"USD":true}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.netRevenue.lastMonth.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.netRevenue.lastMonth.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.netRevenue.lastMonth.difference}}%
+            </div>
+        </div>
+        <div class="customer__statements-item">
+            <h1 class='bold'>Year to Date</h1>
+            <div class="customer__statements_date">
+                {{customerData.netRevenue.yearToDate.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.netRevenue.yearToDate.value | currency:"USD":true}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.netRevenue.yearToDate.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.netRevenue.yearToDate.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.netRevenue.yearToDate.difference}}%
+            </div>
+        </div>
+    </div>
+    <div class="customer__statements_right data-box">
+        <div class="customer__statements-item">
+            <h1 class='bold'>Product Sold MTD</h1>
+            <div class="customer__statements_date">
+                {{customerData.productSold.mtd.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.productSold.mtd.productNumber}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.productSold.mtd.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.productSold.mtd.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.productSold.mtd.difference}}%
+            </div>
+        </div>
+        <div class="customer__statements-item">
+            <h1 class='bold'>Last Month</h1>
+            <div class="customer__statements_date">
+                {{customerData.productSold.lastMonth.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.productSold.lastMonth.productNumber}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.productSold.lastMonth.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.productSold.lastMonth.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.productSold.lastMonth.difference}}%
+            </div>
+        </div>
+        <div class="customer__statements-item">
+            <h1 class='bold'>Year to Date</h1>
+            <div class="customer__statements_date">
+                {{customerData.productSold.yearToDate.date}}
+            </div>
+            <div class="customer__statements_value bold">
+                {{customerData.productSold.yearToDate.productNumber}}
+            </div>
+            <div class="customer__statements_ytd">
+                {{customerData.productSold.yearToDate.yearTodate}}
+            </div>
+            <div class="difference bold" [ngClass]="customerData.productSold.yearToDate.isIncreased ? 'increased' : 'decreased'">
+                {{customerData.productSold.yearToDate.difference}}%
+            </div>
+        </div>
+    </div>
+</div>
+<div class="customer__statements-table">
+    <table class="table table_customer-products">
+        <thead>
+            <th width='10%'>Date</th>
+            <th width='20%'>Statement №</th>
+            <th width='15%'>Previous Balance</th>
+            <th width='10%'>Payments</th>
+            <th width='10%'>New Chargers</th>
+            <th width='15%'>New Balance</th>
+            <th width='15%'>Amount Due</th>
+            <th width='5%'>
+                <img src="../../../common/images/icons/search-white.png" alt="">
+            </th>
+        </thead>
+        <tbody #showDetailsElem class='table_tbody-statements'>
+            <tr *ngFor="let statement of statements">
+                <td colspan="8">
+                    <table class='table table_inner'>
+                        <tr class='customer__table-statement_short'>
+                            <td width='10%'>{{statement.statementOfAccount.date}}</td>
+                            <td width='20%'>{{statement.statementOfAccount.number}}</td>
+                            <td width='15%'>{{statement.statementOfAccount.previousBalance | currency:"USD":true}}</td>
+                            <td width='10%'>{{statement.statementOfAccount.payments}}</td>
+                            <td width='10%'>{{statement.statementOfAccount.newCharges | currency:"USD":true}}</td>
+                            <td width='15%'>{{statement.statementOfAccount.newBalance | currency:"USD":true}}</td>
+                            <td width='15%'>{{statement.statementOfAccount.amountDue}}</td>
+                            <td width='5%'>
+                                <img src="../../../common/images/icons/eye.png" class='eye' alt="">
+                            </td>
+                        </tr>
+                        <tr class=customer__table-statement_full>
+                            <td colspan="8" class='customer__full-statement-wrapper'>
+                                <img [src]='loadImgStore(statement.statementOfAccount.store.imgPath)' alt="" class="customer__statement-store">
+                                <!-- <div class='customer__statements-select-wrapper'>
+                                    <select2 [data]='getCurrentData(statement.options)' [id]='"statements-select-"+i' (activeId)="setCurrentStatement($event)"></select2>
+                                </div> -->
+                                    <h1 class="bold customer__statement_heading">Statement of Account</h1>
+                                    <img [src]="
+                                            loadImg(cardService.currentCard(
+                                                                statement.statementOfAccount.store.score)
+                                                                .cardImage)" alt="" class='customer__statement-store-card'>
+
+                                <div class="customer__statement-inner">
+                                    <div class="customer__statement-inner_head">
+                                        <div class="customer__statement-inner_head_first">
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Credit Summary</h1>
+                                                    <span>{{statement.statementOfAccount.creditSummary}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Store Limit</h1>
+                                                    <span>{{statement.statementOfAccount.storeLimit | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Used</h1>
+                                                    <span>{{statement.statementOfAccount.used | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Available</h1>
+                                                    <span>{{statement.statementOfAccount.available | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="customer__statement-inner_head_second">
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Previous Balance</h1>
+                                                    <span>{{statement.statementOfAccount.previousBalance | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Payments</h1>
+                                                    <span>{{statement.statementOfAccount.payments}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>New Charges</h1>
+                                                    <span>{{statement.statementOfAccount.newCharges | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>New Balance</h1>
+                                                    <span>{{statement.statementOfAccount.newBalance | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="customer__statement-item-wrapper">
+                                                <div class="customer__statement-item">
+                                                    <h1 class='bold'>Minimum Amount Due</h1>
+                                                    <span>{{statement.statementOfAccount.minAmountDue | currency:"USD":true}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="customer__statement-inner_content">
+                                        <table class="table table_inner odd">
+                                            <thead>
+                                                <th width='25%'>Transaction Date</th>
+                                                <th width='20%'>Details</th>
+                                                <th width='15%'>Quantity</th>
+                                                <th width='25%'>Reference Code</th>
+                                                <th>Amount</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let transaction of statement.statementOfAccount.transactions">
+                                                    <td>{{transaction.date}}</td>
+                                                    <td>{{transaction.details}}</td>
+                                                    <td>{{transaction.quantity}}</td>
+                                                    <td>{{transaction.referenceCode}}</td>
+                                                    <td>{{transaction.amount}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="customer__statement-inner_head_first" style='text-align:left'>
+                                        <div class="customer__statement-item-wrapper">
+                                            <div class="customer__statement-item">
+                                                <h1 class='bold'>Finance Charges</h1>
+                                            </div>
+                                        </div>
+                                        <div class="customer__statement-item-wrapper">
+                                            <div class="customer__statement-item">
+                                                <h1 class='bold'>Daily Periodic Rate</h1>
+                                                <span>{{statement.statementOfAccount.dailyPeriodicRate}}%</span>
+                                            </div>
+                                        </div>
+                                        <div class="customer__statement-item-wrapper">
+                                            <div class="customer__statement-item">
+                                                <h1 class='bold'>Annual Percentage Rate</h1>
+                                                <span>{{statement.statementOfAccount.annualPercentageRate}}%</span>
+                                            </div>
+                                        </div>
+                                        <div class="customer__statement-item-wrapper">
+                                            <div class="customer__statement-item">
+                                                <h1 class='bold'>Finance Charge</h1>
+                                                <span>{{statement.statementOfAccount.financeCharge | currency:"USD":true}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

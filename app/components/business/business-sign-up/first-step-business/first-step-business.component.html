@@ -1,0 +1,30 @@
+<div class="sign-up__box">
+    <img class='secure' src="../../../../common/images/icons/secure-icon.png" alt="">
+    <div class="step-counter">1</div>
+    <div class="sign-up__container">
+        <div class="input_wrapper">
+            <input #nameInput type="text" class="input input_common input_sign-up" placeholder="Business name">
+        </div>
+        <div class="input_wrapper">
+            <input #emailInput type="email" class="input input_common input_sign-up" placeholder="E-mail">
+        </div>
+        <div class="input_wrapper">
+            <p class="sign-up__paragraph">This email will be our primary method of contacting you.</p>
+        </div>
+        <div class="input_wrapper">
+            <input #phoneInput type="text" class="input input_common input_sign-up" placeholder="Phone number">
+        </div>
+    </div>
+    <div class="sign-up__footer">
+        <div class="sign-up__footer-caption">All fields are required</div>
+        <div class="sign-up__button step-counter" (click)='switchStep({
+          nextStep: 2,
+          stepNumber: 1,
+          userData:{
+            name: nameInput.value,
+            email: emailInput.value,
+            phoneNumber: phoneInput.value
+          }
+        })'>Next</div>
+    </div>
+</div>

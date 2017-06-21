@@ -1,0 +1,18 @@
+<nav class='cabinet-menu__nav'>
+
+    <a routerLink='profile' class='link' routerLinkActive="active">
+        <div class='cabinet-menu__common-data'>
+            <img src="../../../common/images/photo.png" alt="">
+            <div class='cabinet-menu__caption'>{{userData.name}} {{userData.surname}}</div>
+        </div>
+    </a>
+    <template ngFor let-menuItem [ngForOf]="menuItems">
+
+        <a *ngIf='menuItem.isActiveNow' [routerLink]=menuItem.routerLink routerLinkActive="active" class='cabinet-menu__nav-item'>
+            <img [src]="loadImg(menuItem.imageName)" alt=""> {{menuItem.text}}
+        </a>
+        <div *ngIf='!menuItem.isActiveNow' class='cabinet-menu__nav-item cabinet-menu__nav-item_unactive'>
+            <img [src]="loadImg(menuItem.imageName)" alt=""> {{menuItem.text}}
+        </div>
+    </template>
+</nav>

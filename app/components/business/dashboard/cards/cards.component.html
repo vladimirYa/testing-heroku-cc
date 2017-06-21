@@ -1,0 +1,40 @@
+<div class="dashboard__content grid__row">
+    <div class="dashboard__content_left grid__left">
+        <dashboard-item class='data-box display_block' [title]='"Total cards"'>
+            <div class='dashboard-item__body'>
+                <div class="cards__common">
+                    <div class="dashboard-item__common_title">
+                        {{totalCardsData.date}}
+                    </div>
+                    <div class="dashboard-item__common_value bold">
+                        {{totalCardsData.score}}
+                    </div>
+                    <div class="dashboard-item__common_difference difference" [ngClass]="totalCardsData.isIncreased ? 'increased' : 'decreased'">
+                        {{totalCardsData.difference}}%
+                    </div>
+                </div>
+
+                 <div class='cards__legend'>
+                     <div *ngFor='let legendItem of legend'>
+                        {{legendItem.title}} - {{legendItem.number}}
+                     </div>
+                 </div>
+                 <div>
+                    <div id='chartDonut' (window:resize)="onResizeDonut($event)"></div>
+                </div>
+                <div class="cards__chart-controllers">
+                     <check-box *ngFor='let controller of chartControllers'
+                             [checkBoxData]='controller'
+                             (fireChange)='readNewState($event)'></check-box>
+                </div>
+            </div>
+        </dashboard-item>
+    </div>
+    <div class="dashboard__content_right grid__right">
+        <dashboard-item class='data-box display_block' [title]='"Number of Cardholders"'>
+            <div class='dashboard-item__body'>
+                <business-cardholders></business-cardholders>
+            </div>
+        </dashboard-item>
+    </div>
+</div>

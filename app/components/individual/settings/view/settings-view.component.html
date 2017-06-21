@@ -1,0 +1,58 @@
+<div *ngIf='!isEdit'>
+    <div class="settings__head">
+        <img src="../../../../common/images/icons/cards.png" alt="">
+        <h1 class='bold settings__head-title'>Funding Source</h1>
+        <div class="button button_primary button_size_sm" (click)='switchToEdit()'>Edit</div>
+    </div>
+    <div class="data-box">
+
+        <div class="settings__primary">
+            <h1 class='bold'>Primary</h1>
+            <div class="settings__primary-item">
+                <img src="../../../../common/images/icons/citibank.png" alt=""> 4147 4640 1258 3210
+            </div>
+        </div>
+        <div class="settings__back-up">
+            <h1 class='bold'>Back Up</h1>
+
+            <div class="settings__primary-item" *ngFor='let item of backUps'>
+                <img [src]="loadImg(item.bank_icon)" alt=""> {{item.card_number}}
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf='isEdit'>
+    <div class="settings__head">
+        <img src="../../../../common/images/icons/cards.png" alt="">
+        <h1 class='bold settings__head-title'>Funding Source</h1>
+        <div class="button button_primary button_size_sm" (click)='switchToEdit()'>Save</div>
+    </div>
+    <div class="data-box">
+
+        <div class="settings__primary">
+            <h1 class='bold'>Primary</h1>
+            <div class="settings__primary-item">
+                <img src="../../../../common/images/icons/citibank.png" alt="">
+                <div class='settings-edit__decline-wrapper'>
+                    4147 4640 1258 3210
+                    <div class="settings-edit_button settings-edit_decline">
+                        <img src="../../../../common/images/icons/close.png" (click)='removeBank("2")' alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="settings__back-up">
+            <h1 class='bold'>Back Up</h1>
+
+            <div class="settings__primary-item" *ngFor='let item of backUps'>
+                <img [src]="loadImg(item.bank_icon)" alt="">
+                <div class='settings-edit__decline-wrapper'>
+                    {{item.card_number}}
+                    <div class="settings-edit_button settings-edit_decline">
+                        <img src="../../../../common/images/icons/close.png" (click)='removeBank(item.bank_id)' alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

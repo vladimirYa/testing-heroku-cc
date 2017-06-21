@@ -1,0 +1,13 @@
+<div class="step-number">6</div>
+<img src="../../../common/images/icons/secure-icon.png" alt="" class="secure">
+<h1 class="heading">Congratulations, you have been approved for a Gold ChargaCard!</h1>
+<img class="card-img" [src]='loadCardImage(currentCard.cardImage)' alt="">
+<h1 class="heading heading_chargascore">Your ChargaScore is {{score}}</h1>
+<scale
+        [score]='score'
+        [scaleWidthInPercnets]='80'
+        [height]='[185, 150]'
+        ></scale>
+<button class="button button_finalize">Finalize order</button>
+<a routerLink="../fourth-step" class="button button_back">Back</a>
+<a routerLink="/individual/dashboard" class="button button_next">Confirm</a>

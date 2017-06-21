@@ -1,0 +1,35 @@
+<div class="favorites__left">
+    <div class="favorites__item data-box">
+        <div class="favorites__stores">
+            <h1 class='bold'>Favorite Stores</h1>
+            <div *ngIf='getFavoriteStores().length'>
+                <div class="favorites__store-wrapper" *ngFor = 'let store of getFavoriteStores()'>
+                    <img [src]="loadImg(store)" alt="" class="favorites__store">
+                </div>
+            </div>
+            <div *ngIf='!getFavoriteStores().length' class='favorites__empty'>
+                <span>Empty now</span>
+            </div>
+        </div>
+        <div class="favorites__products">
+            <h1 class='bold'>Favorite Products</h1>
+            <div *ngIf='!getFavoriteProducts().length' class='favorites__empty'>
+                <span>Empty now</span>
+            </div>
+            <div *ngIf='getFavoriteProducts().length'>
+                <div class="favorites__product-wrapper" *ngFor = 'let product of getFavoriteProducts()'>
+                    <div class="favorites__product-image-wrapper">
+                        <img [src]="loadImg(product.imageUrl)" alt="" class="favorites__product-image">
+                    </div>
+                    <div class='favorites__product_name'>{{product.name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="favorites__right">
+    <div class="favorites__item data-box">
+        <h1 class='bold'>Credit Limit</h1>
+        <div id="credit-limit-chart"></div>
+    </div>
+</div>

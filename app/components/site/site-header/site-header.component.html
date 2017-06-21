@@ -1,0 +1,32 @@
+ <div class="site-header__logo" [ngClass]="(business)?'site-header__logo_size_m':'site-header__logo_size_s'">
+    <a class="site-header__item site-header__item_logo" (click)="clickOnLink($event)" routerLink="">
+        <img class="img_site-logo" src="../../../common/images/ChargaCard-logo.png" alt="">
+    </a>
+    <a class="site-header__item site-header__item_logo" *ngIf="business" (click)="clickOnLink($event)" routerLink="business">
+        <img class="img_site-logo img_site-logo_business" src="images/logo-business.png" alt="">
+    </a>
+</div>
+<div class="site-header__items">
+    <a class="site-header__item site-header__item_text" *ngFor='let link of siteLinks' (click)="clickOnLink($event)" routerLinkActive="active" [routerLink]=link.routerLink>
+        {{link.text}}
+    </a>
+</div>
+<a class="site-header__item site-header__item_text site-header__item_right" *ngIf="business" (click)="clickOnLink($event)" routerLinkActive="active" routerLink="#">
+    Try for Free
+</a>
+<a class="site-header__item site-header__item_text site-header__item_right" (click)="openModalLogin('site-login')">
+    Login
+</a>
+<modal-window id="site-login" class="invisible">
+    <h1 class="heading heading_title heading_bold">Login</h1>
+    <h2 class="heading">Log into your account with your mobile number.</h2>
+    <div class="site-login">
+        <h6 class="heading heading_number">Your mobile number</h6>
+        <input class="site-login__input" type="tel">
+        <div class="site-login__button">Login</div>
+        <input class="site-login__input site-login__input_passwd" type="password">
+        <h2 class="heading heading_login-business">Log in to a business account? <a class="site-login__link" href="#">Click here.</a></h2>
+    </div>
+    <p class="paragraph paragraph_need-help">Need help? <br>+1-650-353-5889 <br>contact@chargacard.com</p>
+    <div class="modal__close" (click)="modalService.close('site-login')"></div>
+</modal-window>

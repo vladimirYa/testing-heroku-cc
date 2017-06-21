@@ -1,0 +1,109 @@
+@import (less) url('../../../common/mixins/flex-mixins.less');
+:host{
+  //font-family: 'Assistant', sans-serif;
+}
+.header{
+  position: relative;
+}
+.heading{
+  font-family: 'Assistant', sans-serif;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 30px auto;
+  @media (min-width:1500px) {
+    font-size: 35px;
+  }
+  &_slogan{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    z-index: 10;
+    transform: translate(-50%,-50%);
+    font-weight:600;
+    font-size: 40px;
+    color: white;
+    @media (min-width:1500px) {
+      font-size: 50px;
+    }
+  }
+  &_new-card{
+    font-weight:600;
+
+  }
+  &_mission{
+    margin: 100px auto;
+  }
+  &_history{
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (min-width:1500px) {
+      top: 50px;
+    }
+  }
+}
+.paragraph{
+  font-family: 'Assistant', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 30px;
+  @media (min-width:1500px) {
+    font-size: 25px;
+    line-height: 45px;
+  }
+  &_new-card{
+    width: 90%;
+    font-size: 25px;
+    text-align: left;
+  }
+  &_about{
+    margin:100px auto 50px;
+  }
+}
+
+.img{
+  &_header_bg{
+    width: 100%;
+  }
+  &_gold{
+    width: 40%;
+    @media (min-width:1500px) {
+      margin: 0 100px;
+    }
+  }
+
+}
+.new-card{
+  .flex-row-space-between-center();
+  width: 75%;
+  margin: 100px auto;
+  @media (min-width:1500px) {
+    width: 70%;
+  }
+  &__text{
+    width: 50%;
+
+  }
+}
+.about{
+  background-color:  #f6fbfd;
+  padding:50px 0;
+}
+.team{
+  text-align: center;
+  padding: 50px 0;
+  &__text{
+    .flex-row-space-between-flex-start();
+    width: 80%;
+    margin: 50px auto;
+    p{
+      width: 45%;
+      text-align: justify;
+    }
+  }
+}

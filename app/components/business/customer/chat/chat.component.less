@@ -1,0 +1,158 @@
+@import (less) '../../../../common/mixins/flex-mixins';
+@import (less) '../../../../common/styles/variables';
+
+:host{
+    padding: 0px 30px;
+    & .button{
+        margin: 5px auto;
+    }
+}
+.chat {
+    &__wrapper{
+        padding: 1px;
+        background-color: #F0F5F9;
+    }
+    &__heading {
+        text-align: center;
+        margin: 10px 0;
+    }
+    &__message-box{
+        position: relative;
+        width: 90%;
+        margin: 10px auto;
+        .flex-row-space-between-center();
+        &.reverse{
+            flex-direction: row-reverse;
+        }
+    }
+    &__message{
+        background-color: #fff;
+        display: inline-block;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid  @profile-border-color;
+        border-radius: 18px;
+        max-width: 300px;
+        word-wrap: break-word;
+        @media screen and (max-width: 1370px){
+            max-width: 160px;
+            font-size: 14px;
+            border-radius: 17px;
+        }
+        .chat__message-box.reverse &{
+            float: right;
+        }
+        &-wrapper{
+            .flex-row-flex-start-center();
+            .chat__message-box.reverse &{
+                flex-direction: row-reverse;
+            }
+        }
+        &-title{
+            margin-bottom: 5px;
+            font-size: 14px;
+            .chat__message-box.reverse &{
+                text-align: right;
+            }
+        }
+        &-date{
+            font-size: 12px;
+        }
+        &-avatar-box{
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #000;
+            position: relative;
+            margin: 0 10px;
+            & > img{
+                max-width: 100%;
+                position: absolute;
+                top:50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    // &__send-message {
+    //     width: 90%;
+    //     margin: 10px auto;
+    //     overflow: hidden;
+    //     display: flex;
+    //     position: relative;
+    //     height: 70px;
+    //
+    //     & > div {
+    //         display: inline-block;
+    //
+    //         & .chat__sender-avatar {
+    //             max-width: 100%;
+    //             position: absolute;
+    //             left: 0;
+    //             right: 0;
+    //             top: 0;
+    //             bottom: 0;
+    //             margin: auto;
+    //         }
+    //     }
+    //     & .button.button_primary {
+    //         display: inline-block;
+    //         vertical-align: top;
+    //         margin: 0;
+    //         outline: none;
+    //         width: 30%;
+    //         position: absolute;
+    //         right: 0;
+    //         line-height: 50px;
+    //         height: 50px;
+    //     }
+    // }
+    //
+    // &__sender-avatar-box {
+    //     position: relative;
+    //     width: 60px;
+    //     float: left;
+    // }
+    // &__sender-avatar-wrapper{
+    //     width: 50px;
+    //     height: 50px;
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 0;
+    //     right: 0;
+    //     margin: 0 auto;
+    //     border-radius: 50%;
+    //     border: 2px solid @profile-border-color;
+    //     @media screen and (max-width: 1370px){
+    //         width: 40px;
+    //         height: 40px;
+    //     }
+    // }
+    //
+    // &__message {
+    //     display: inline-block;
+    //     vertical-align: top;
+    //     border: none;
+    //     outline: none;
+    //     height: 50px;
+    //     margin: 0;
+    //     width: 70%;
+    //     padding: 0;
+    //     resize: none;
+    //     padding: 5px;
+    //     box-sizing: border-box;
+    //     box-shadow: inset 0 0 0 1px @profile-border-color;
+    //     &-content {
+    //         width: 100%;
+    //         position: absolute;
+    //         float: right;
+    //         left: 0;
+    //         padding-left: 60px;
+    //         bottom: 0;
+    //     }
+    // }
+    // &__message-content-title{
+    //     margin-bottom: 5px;
+    //     font-size: 14px;
+    // }
+}

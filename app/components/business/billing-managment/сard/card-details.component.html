@@ -1,0 +1,48 @@
+<div class="chart">
+    <div class="chart__wrapper data-box">
+        <div class="chart__selects">
+
+             <select2 [id]='"card-chart-types"'
+                      [data]='chartSelectTypes'
+                      (activeId)='readOption($event)'
+                      class='types'></select2>
+              <select2 [id]='"card-chart-dates"'
+                       [data]='chartSelectDates'
+                       (activeId)='readOptionDate($event)'
+                       class='dates'></select2>
+        </div>
+        <div class="chart__container">
+            <div id="chart" (window:resize) = 'onResize($event)'></div>
+        </div>
+    </div>
+</div>
+<div class="billing-managment__table-wrapper billing-managment__table-wrapper_card-details">
+    <table class="table odd">
+        <thead>
+            <th>Name</th>
+            <th>Card</th>
+            <th>Statement &#8470;</th>
+            <th>Status</th>
+            <th>Balance</th>
+            <th>Next Payment</th>
+            <th>Due On</th>
+            <th>
+                <img src="../../../../common/images/icons/search-white.png" class='search' alt="">
+            </th>
+        </thead>
+        <tr *ngFor='let statement of currentStatements'
+            [routerLink]="['/business/customers/customer', statement.customer_id]">
+            <td>{{statement.customer_full_name}}</td>
+            <td>
+                <img [src]="loadFlatCard(cardService.cardByType(statement.card_type).cardFlatImage)" alt="">
+                    {{statement.card_type | capitalize }}
+            </td>
+            <td>{{statement.statement_number}}</td>
+            <td>{{statement.status | capitalize}}</td>
+            <td>{{statement.balance | currency:'USD':true}}</td>
+            <td>{{statement.next_payment | currency:'USD':true}}</td>
+            <td>{{statement.due_on}}</td>
+            <td style='font-size:30px'>...</td>
+        </tr>
+    </table>
+</div>

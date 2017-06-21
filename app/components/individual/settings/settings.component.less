@@ -1,0 +1,71 @@
+.settings{
+    padding: 0 20px;
+    @media screen and (max-width: 1370px){
+        padding: 0 10px;
+    }
+    &__heading{
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+    &__paragraph{
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    & .grid__left{
+        padding-left: 0;
+    }
+    & .grid__right{
+        padding-right: 0;
+    }
+    &__head{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 40px;
+        margin-bottom: 10px;
+        &-title{
+            font-size: 22px;
+
+        }
+        & .button{
+            margin: 0;
+            margin-left: 10px;
+        }
+        & img{
+            max-height: 40px;
+            margin-right: 10px;
+        }
+    }
+    & .data-box{
+        padding: 10px;
+    }
+    &__primary{
+        padding: 10px;
+        border-bottom: 2px solid #f0f3f6;
+        &-item{
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &__back-up{
+        padding: 10px;
+    }
+    & .grid__right .data-box{
+        padding: 20px 20px 10px;
+    }
+    &__search-wrapper{
+        display: flex;
+        width: 100%;
+        margin: 20px auto;
+        & .input__search-wrapper{
+            width: 79%;
+        }
+    }
+    &__button-add{
+        width: 19%;
+        margin: 0;
+        margin-left: 2%;
+    }
+}

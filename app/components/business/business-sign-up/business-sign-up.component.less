@@ -1,0 +1,104 @@
+
+    
+
+.sign-up{
+    background: linear-gradient(to top left,#e4e8ef,#b3d7e0);
+    min-height: 100%;
+    width: 100%;
+    display: block;
+    padding: 100px 0;
+    box-sizing: border-box;
+    &__heading{
+        font-size: 25px;
+        color: #303030;
+        text-align: center;
+    }
+    &__box{
+        position: relative;
+        width: 40%;
+        margin-top: 30px;
+        background-color: #fff;
+        min-height: 50px;
+        border-radius: 25px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; 
+        padding: 1px 50px 60px;
+        max-width: 800px;
+    }
+    &__container{
+        margin-top: 60px;
+    }
+    &__paragraph{
+        font-size: 18px;
+        padding: 10px 0;
+        text-align: center;
+    }
+    &__footer{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        &-caption{
+            color: #71d3ed;
+            font-size: 18px;
+            line-height: 50px;
+            padding-left: 50px;
+            &.second{
+                text-align: center;
+                padding-left: 0;
+            }
+        }
+    }
+}
+.secure{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 30px;
+}
+.step-counter{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    background-color: #71d3ed;
+    color: #fff;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 0 25px 0 25px;
+    &.sign-up__button{
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        width: 100px;
+        border-radius: 25px 0px 25px 0px;
+        &_back{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            top: auto;
+            width: 100px;
+            border-radius: 0px 25px 0px 25px;
+        }
+    }
+}
+.input{
+    &_wrapper{
+        margin: 10px 0;
+    }
+    &.input_sign-up{
+        border-color: #ededed;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        &::placeholder{
+            font-size: 18px;
+            color: rgb(181, 181, 181);
+            font-style: normal;
+        }
+    }
+}

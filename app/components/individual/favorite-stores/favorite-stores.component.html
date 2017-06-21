@@ -1,0 +1,79 @@
+<h1 class='bold favorite-stores__heading'>Favorite Stores</h1>
+<div class='input-search-wrapper'>
+    <input type="text" placeholder="Enter Store name" class='input input_individual input_search' #storeName (keyup.enter)='findStore("store-find-result", storeName.value)'>
+    <img src="../../../common/images/icons/search.png" alt="" class='search' (click)='findStore("store-find-result", storeName.value)'>
+</div>
+<canvas id='canvas' (window:resize)="onResize()"></canvas>
+
+<div class="favorite-stores__stores">
+    <div class="favorite-stores__stores-item" *ngFor="let cardStores of unlockedCards;let i = index">
+        <div class="favorite-stores__image-wrapper" *ngFor="let store of cardStores.storeIcons">
+            <img [src]="loadImg(store.iconPath)" alt="" (click)="this.openModalStoreDetails('store-details', store)">
+        </div>
+        <div class="favorite-stores__locked" *ngIf='!cardStores.isAvailable'>
+            <div class="favorite-stores__breakpoint">>{{cardStores.breakpoint}}</div>
+            <div class='button-wrapper'>
+                <div class="button button_primary button_favorite-stores" (click)="modalService?.open('get-access-'+i)">Get access</div>
+            </div>
+            <modal-window [id]="'get-access-'+i" class="invisible">
+                <h1 class='bold heading_get-access'>Get Access</h1>
+                <div class="modal_get-access">
+                    <p class="modal__paragraph">{{cardStores?.modalBody}}</p>
+                    <div class="button button_primary">Make a payment</div>
+                </div>
+                <div class="modal__close" (click)="modalService.close('get-access-'+i)"></div>
+            </modal-window>
+        </div>
+    </div>
+</div>
+<div class="button button_primary">View details</div>
+<modal-window id="store-details" class="invisible">
+    <h1 class='bold'>My {{storeData?.name | capitalize}} card</h1>
+    <div class="favorite-stores__modal grid__row">
+        <div class="grid__left">
+            <img *ngIf='storeCard' [src]="loadCardImg(storeCard.cardImage)" class='favorite-stores__store-card' alt="">
+        </div>
+        <div class="grid__right">
+            <div class="favorite-stores__cash-data">
+                <div class="favorite-stores__cash-data-item">
+                    <h1 class="bold">Store Limit</h1> {{storeData?.storeLimit | currency:'USD':true}}
+                </div>
+                <div class="favorite-stores__cash-data-item">
+                    <h1 class="bold">Used</h1> {{storeData?.used | currency:'USD':true}}
+                </div>
+                <div class="favorite-stores__cash-data-item">
+                    <h1 class="bold">Available</h1> {{storeData?.available | currency:'USD':true}}
+                </div>
+            </div>
+            <p class='favorite-stores__paragraph' *ngIf='!isBlack'>Click here to request a {{storeData?.name | capitalize}} {{storeNextCard?.title | capitalize}} Card with higher credit limit and lower interest rate.</p>
+            <p class='favorite-stores__paragraph' *ngIf='isBlack'>You have Black Card</p>
+            <div class="button button_primary">Request a higher credit limit</div>
+        </div>
+    </div>
+    <div class="modal__close" (click)="modalService.close('store-details')"></div>
+</modal-window>
+
+<modal-window id='store-find-result' class='invisible'>
+    <div class="favorite-stores__modal-find">
+        <h1 class="bold">Search Result</h1>
+        <div ad-host *ngIf='!isEmptyResult' ></div>
+            <!--<thead>-->
+                <!--<th *ngFor="let column of columnsOfFavouriteStore" [class]="tableSort.selectedClass(column.variable)" (click)="tableSort.changeSorting(column.variable)">{{column.text}}</th>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+                <!--<tr *ngFor='let foundStore of foundStores | filter: tableSort.convertSorting(columnsOfFavouriteStore)'>-->
+                    <!--<td *ngFor="let column of columnsOfFavouriteStore">-->
+                        <!--<img *ngIf="column.filter=='img'" class='store-image' [src]="loadImg(foundStore?.iconPath)" alt="">-->
+                        <!--<div *ngIf="column.filter=='none'" class="button button_primary">Request Card</div>-->
+                        <!--{{ column.filter=='img' || column.filter=='none'? "" :(foundStore[column.variable] | currency:'USD':true ) }}-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</tbody>-->
+            <!--<table-pagination [arrOfItems]="foundStores" [tableTitles]="columnsOfFavouriteStore"></table-pagination>-->
+        <p class='favorite-stores__no-stores' *ngIf='isEmptyResult'>
+            No stores found with this name
+        </p>
+
+    </div>
+    <div class="modal__close" (click)="modalService.close('store-find-result')"></div>
+</modal-window>

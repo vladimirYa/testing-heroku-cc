@@ -1,0 +1,35 @@
+@import (less) '../../../../common/mixins/flex-mixins';
+
+.recent-activity {
+
+    &__view-more {
+        width: 900px;
+        &_lg{
+            width: 1150px;
+        }
+    }
+}
+.refund-process{
+    &__wrapper{
+        margin-top: 20px;
+    }
+    &__content{
+        text-align: left;
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+    }
+    &__controllers{
+        width: 100%;
+        .flex-row-space-between-center();
+        & .button{
+            margin: 10px 0;
+            &.button_grey{
+                width: 120px;
+            }
+            &.button_primary{
+                width: 220px;
+            }
+        }
+    }
+}

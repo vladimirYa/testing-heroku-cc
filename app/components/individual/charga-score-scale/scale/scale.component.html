@@ -1,0 +1,7 @@
+<canvas id="scale" (window:resize)="onResize($event)"></canvas>
+<div class='scale__data'>
+    <h1 class="bold scale__score">{{score}}</h1>
+    <div class="difference" *ngIf="scaleData" [ngClass]="scaleData.isIncreased ? 'increased' : 'decreased'">
+        {{scaleData.difference_value}} points
+    </div>
+</div>

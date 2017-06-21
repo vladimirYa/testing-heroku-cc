@@ -1,0 +1,73 @@
+<h1 class="bold card-details__heading">
+    <span routerLink='/business/card' class='bold'>Card Management</span> -> {{cardType | capitalize}} Card
+</h1>
+<div class="card-details__head">
+    <div class="card-details__head-sector data-box">
+        <div class="common-data">
+            <h1 class="bold data-sector__data">{{cardType | capitalize}} Card</h1>
+            <div class="data-sector__data data-sector__data_light">Average ChargaScore</div>
+            <div class='data-sector__data bold'>{{this.score}}</div>
+            <div class="data-sector__data">
+                <img [src]="loadFlatCard(cardService.cardByType(this.cardType).cardFlatImage)" class='card-details__flat-card' alt="">
+            </div>
+        </div>
+        <img [src]="loadFlatCard(cardService.cardByType(this.cardType).cardImage)" class='card-details__card-image' alt="">
+    </div>
+    <div class="card-details__head-sector data-box">
+        <data-sector [data]='totalCards' [heading]='"Total Cards"'></data-sector>
+    </div>
+    <div class="card-details__head-sector data-box">
+        <data-sector [data]='totalChargaCredits' [heading]='"Total ChargaCredits"' [isValueCurrency]='true'></data-sector>
+        <data-sector [data]='creditsUsed' [heading]='"Credits Used"' [isValueCurrency]='true'></data-sector>
+        <data-sector [data]='creditsAvailable' [heading]='"Credits Available"' [isValueCurrency]='true'></data-sector>
+    </div>
+    <div class="card-details__head-sector data-box">
+        <data-sector [data]='interestRate' [heading]='"Average Interest Rate"'></data-sector>
+        <data-sector [data]='interestIncome' [heading]='"Interest Income"' [isValueCurrency]='true'></data-sector>
+    </div>
+</div>
+<div class="card-details__fluid-box">
+    <div class="card-details__download">
+        <img src="../../../../common/images/icons/download.png" alt="">
+        <span class="bold">Download Transactions</span>
+    </div>
+    <table class="table odd">
+        <thead>
+            <th>Name</th>
+            <th>Score</th>
+            <th>Credit Limit</th>
+            <th>Used</th>
+            <th>Available</th>
+            <th>Interest Rate</th>
+            <th>Notes</th>
+            <th>
+                <img class='table-icon' src="../../../../common/images/icons/search-white.png" alt="">
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of transactions">
+                <td>{{transaction?.full_name}}</td>
+                <td>{{transaction?.score}}</td>
+                <td>{{transaction?.credit_limit | currency:'USD':true}}</td>
+                <td>{{transaction?.credit_used | currency:'USD':true}}</td>
+                <td>{{transaction?.credit_available | currency:'USD':true}}</td>
+                <td>{{transaction?.interest_rate}}%</td>
+                <td>
+                    <img class='table-icon' src="../../../../common/images/icons/notes.png" alt="">
+                </td>
+                <td>
+                    <img class='table-icon' src="../../../../common/images/icons/ellipsis.png" alt=" ">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="card-details__fluid-box">
+    <div class="card-main__selects">
+        <select2 [id]='"card-chart-numbers"' [data]='cardChartSelectNumbers' (activeId)='readOptionNumber($event)' class='numbers'></select2>
+        <select2 [id]='"card-chart-dates"' [data]='cardChartSelectDates' (activeId)='readOptionDate($event)' class='dates'></select2>
+    </div>
+    <div class="card-details__chart-wrapper">
+        <div id="chart" (window:resize)='onResize($event)'></div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<nav-row></nav-row>
+
+<div class="dashboard-wrapper">
+    <div class="dashboard">
+        <div class="dashboard_left">
+            <div class="dashboard__content">
+                <common-data></common-data>
+                <favorite-stores class='data-box display_block'></favorite-stores>
+                <recent-activity [recentActivities] = 'userIndividual.recentActivities' class="data-box display_block"></recent-activity>
+                <!---->
+            </div>
+        </div>
+        <div class="dashboard_right">
+            <div class="dashboard__content">
+                <recent-alerts class='data-box display_block'></recent-alerts>
+                <charga-score-scale class='data-box display_block'></charga-score-scale>
+                <increase-score class="data-box display_block"></increase-score>
+            </div>
+        </div>
+    </div>
+</div>

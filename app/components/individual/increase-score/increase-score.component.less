@@ -1,0 +1,113 @@
+@import (less) '../../../common/styles/variables';
+@import (less) '../../../common/mixins/mixins';
+@import (less) '../../../common/mixins/flex-mixins';
+
+:host{
+    margin-top: 10px;
+}
+.increase-score{
+    &__card-black{
+        width: 250px;
+    }
+    &__modal{
+        width: 800px;
+        &  > h1{
+            margin-bottom: 30px;
+        }
+        &-paragraph{
+            line-height: 1.4;
+            padding: 10px 40px;
+            text-align: left;
+            & .important{
+                color: #2dc0e8;
+            }
+        }
+    }
+    &__heading{
+        margin: 10px 0;
+        text-align: center;
+    }
+    &__content{
+        display: block;
+        margin: 10px auto;
+        width: 95%;
+        text-align: center;
+    }
+    &__cards{
+        overflow: hidden;
+        & .increase-score__active-card,
+        .increase-score__next-card{
+            & img{
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+    &__active-card{
+        & img{
+            width: 250px;
+            @media screen and (max-width: 1370px){
+                width: 200px;
+            }
+        }
+    }
+    &__next-card{
+        & img{
+            width: 180px;
+            @media screen and (max-width: 1370px){
+                width: 150px;
+            }
+        }
+        & .button{
+            .vertical-align-middle(30px);
+        }
+    }
+    &__title{
+        font-size: 18px;
+        margin: 15px 0;
+        @media screen and (max-width: 1370px){
+            font-size: 15px;
+        }
+    }
+    &__paragraph{
+        line-height: 40px;
+        font-size: 18px;
+        @media screen and (max-width: 1370px){
+            font-size: 13px;
+            line-height: 30px;
+        }
+        & .underline-dashed{
+            padding-bottom: 3px;
+            border-bottom: 3px @main-blue dashed;
+            cursor: pointer;
+        }
+    }
+    &__border{
+        box-shadow: inset 1px 0 0 0 @profile-border-color, -1px 0 0 0 @profile-border-color;
+    }
+    &__bank-verify{
+        & > img{
+            vertical-align: bottom;
+        }
+        & .increase-score__verified{
+            position: relative;
+            display: inline;
+            padding-right: 26px;
+            & .check{
+                background-image: url('../../../common/images/icons/check.png');
+                width: 26px;
+                height: 26px;
+                background-color: #86c584;
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 50%;
+                position: absolute;
+                right: -10px;
+                top:-4px;
+            }
+        }
+    }
+    &__verification{
+        margin-top: 20px;
+    }
+}

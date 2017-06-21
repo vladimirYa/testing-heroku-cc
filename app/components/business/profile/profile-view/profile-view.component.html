@@ -1,0 +1,49 @@
+<nav-row class='profile-view__nav-row'>
+    <div routerLink='/business/profile/edit' class='edit-trigger'>Edit</div>
+</nav-row>
+
+<div class="profile-view_wrapper">
+    <div class='profile-view data-box'>
+        <div class="profile-view__seciton left">
+            <img [src]="loadImg(businessData.store_image_path)" alt="">
+            <div class="profile-view__data bold profile-view__name">{{businessData.name}}</div>
+            <div class="profile-view__data">{{businessData.site_url}}</div>
+        </div>
+        <div class="profile-view__seciton center">
+            <h1 class='profile-view__data profile-view__data_heading bold'>Personal information</h1>
+            <div class="profile-view__data-image">
+                <img src="../../../../common/images/icons/person.png" alt="email">
+                <div class="profile-view__data">{{businessData.owner_name}} {{businessData.owner_surname}}</div>
+            </div>
+            <div class="profile-view__data-image">
+                <img src="../../../../common/images/icons/mail.png" alt="email">
+                <div class="profile-view__data">{{businessData.owner_email}}</div>
+            </div>
+            <div class="profile-view__data-image profile-view__data-property_bottom">
+                <img src="../../../../common/images/icons/phone.png" alt="number">
+                <div class="profile-view__data">{{businessData.owner_number}}</div>
+            </div>
+        </div>
+        <div class="profile-view__seciton right">
+            <h1 class='profile-view__data profile-view__data_heading bold'>Address information</h1>
+            <div class="profile-view__data-wrapper">
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">Street:</div>
+                    <div class="profile-view__data">{{businessData.street}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">State:</div>
+                    <div class="profile-view__data">{{businessData.state}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">City:</div>
+                    <div class="profile-view__data">{{businessData.city}}</div>
+                </div>
+                <div class="profile-view__data-property">
+                    <div class="profile-view__data-name">Zip:</div>
+                    <div class="profile-view__data">{{businessData.zip}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

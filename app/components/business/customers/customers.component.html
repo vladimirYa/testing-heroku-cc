@@ -1,0 +1,33 @@
+<div class="head head_customer">
+    <h1 class='bold'><span routerLink='/business/customers' class='bold'>Customers</span></h1>
+    <div class="input__search-wrapper">
+        <input type="text" class="input input_search input_common" placeholder="Enter customer name">
+        <img src="../../../common/images/icons/search.png" alt="" class="search">
+    </div>
+</div>
+<div class="customer-dashboard">
+    <div class="customer-dashboard__head">
+        <div class="customer-dashboard__head-item" style="width:20%;">Name</div>
+        <div class="customer-dashboard__head-item" style="width:16%;">Card</div>
+        <div class="customer-dashboard__head-item" style="width:12%;">ChargaScore</div>
+        <div class="customer-dashboard__head-item" style="width:16%;">Credit Limit</div>
+        <div class="customer-dashboard__head-item" style="width:16%;">Credit Used</div>
+        <div class="customer-dashboard__head-item" style="width:16%;">Credit Available</div>
+    </div>
+    <div class="customer-dashboard__customer data-box"
+         *ngFor='let customer of customers'
+         [routerLink]="['/business/customers/customer', customer?.id]">
+        <div class="customer-dashboard__customer-item customer-dashboard__avatar-wrapper" style="width:20%;">
+            <img [src]="loadAvatar(customer?.avatar_url)" alt="" class='customer-dashboard__avatar'>
+            {{customer?.full_name}}
+        </div>
+        <div class="customer-dashboard__customer-item customer-dashboard__card-wrapper" style="width:16%;">
+            <img [src]="loadCard(cardService.currentCard(customer?.score).cardFlatImage)" class='customer-dashboard__card' alt="">
+            {{cardService.currentCard(customer?.score).title | capitalize}} Card
+        </div>
+        <div class="customer-dashboard__customer-item" style="width:12%;">{{customer?.score}}</div>
+        <div class="customer-dashboard__customer-item" style="width:16%;">{{customer?.credit_limit | currency:'USD':true}}</div>
+        <div class="customer-dashboard__customer-item" style="width:16%;">{{customer?.credit_used | currency:'USD':true}}</div>
+        <div class="customer-dashboard__customer-item" style="width:16%;">{{customer?.credit_available | currency:'USD':true}}</div>
+    </div>
+</div>

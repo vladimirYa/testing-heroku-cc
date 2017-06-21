@@ -1,0 +1,40 @@
+.cards{
+
+    &__legend{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25%;
+        @media screen and (max-width: 1370px){
+            font-size: 14px;
+        }
+        @media screen and (max-width: 1300px){
+            font-size: 12px;
+        }
+        & > div{
+            margin-bottom: 5px;
+        }
+    }
+
+    &__common{
+        position: absolute;
+        left: 10px;
+        top: 31px; // Heading font-size + dashboard-item padding-top + margin;
+        & > div {
+            margin-bottom: 10px;
+        }
+    }
+    &__chart-controllers{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25%;
+        right: 0;
+        @media screen and (max-width: 1370px){
+            font-size: 14px;
+        }
+        @media screen and (max-width: 1300px){
+            font-size: 12px;
+        }
+    }
+}

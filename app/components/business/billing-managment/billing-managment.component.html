@@ -1,0 +1,91 @@
+<div class="billing-managment">
+    <div class='billing-managment__head'>
+        <h1 class="billing-managment__heading bold">
+                <span routerLink='/business/billing' class='bold anchor'>Billing Managment</span>
+                {{componentRoute}}</h1>
+        <div class="billing-managment__search">
+            <input type="text" class="input input_search" placeholder="Enter customer name">
+            <img src="../../../common/images/icons/search.png" alt="" class="search">
+        </div>
+    </div>
+
+    <div class="billing-managment__content">
+        <div class="grid__row">
+            <div class="grid__left">
+                <div class="billing-managment__content-item billing-managment__data-sector data-box">
+                    <data-sector class='display_block'
+                        [heading]="'Net Revenue MTD'"
+                        [data]='netRevenueMtd'
+                        [isValueCurrency]='true'>
+                    </data-sector>
+                    <data-sector class='display_block'
+                        [heading]="'Last Month'"
+                        [data]='lastMonthRevenue'
+                        [isValueCurrency]='true'>
+                    </data-sector>
+                    <data-sector class='display_block'
+                        [heading]="'Last Year'"
+                        [data]='lastYearRevenue'
+                        [isValueCurrency]='true'>
+                    </data-sector>
+                </div>
+            </div>
+            <div class="grid__right">
+                <div class="billing-managment__content-item billing-managment__data-sector data-box">
+                    <data-sector class='display_block'
+                        [heading]="'Product Sold MTD'"
+                        [data]='productSoldMtd'>
+                    </data-sector>
+                    <data-sector class='display_block'
+                        [heading]="'Last Month'"
+                        [data]='lastMonthProduct'>
+                    </data-sector>
+                    <data-sector class='display_block'
+                        [heading]="'Last Year'"
+                        [data]='lastYearProduct'>
+                    </data-sector>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+    <!-- <div class="billing-managment__charts grid__row">
+        <div class="billing-managment__chart billing-managment__chart_stack-bar">
+            <stack-bar class="data-box"></stack-bar>
+        </div>
+        <div class="billing-managment__chart billing-managment__chart_donut">
+            <donut class="data-box"
+                [data]='donutData'
+                [controllersData]='donutControllers'
+            ></donut>
+        </div>
+    </div> -->
+    <!-- <div class="billing-managment__table-wrapper">
+        <table class="table odd">
+            <thead>
+                <th width='16%'>Card</th>
+                <th width='14%'>Product Sold</th>
+                <th width='14%'>Paid</th>
+                <th width='14%'>Open</th>
+                <th width='14%'>Processing</th>
+                <th width='14%'>Past Due</th>
+                <th width='14%'>Failed</th>
+            </thead>
+            <tbody>
+                <tr *ngFor='let card of cardsData'
+                    [routerLink]="['/business/billing', card.type]">
+                    <td width='16%'>
+                        <img [src]="loadFlatCard(cardService.cardByType(card.type).cardFlatImage)" alt="">
+                            {{card.type | capitalize}}
+                    </td>
+                    <td width='14%'>{{card.product_sold}}</td>
+                    <td width='14%'>{{card.paid}}</td>
+                    <td width='14%'>{{card.open}}</td>
+                    <td width='14%'>{{card.processing}}</td>
+                    <td width='14%'>{{card.past_due}}</td>
+                    <td width='14%'>{{card.failed}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+</div>

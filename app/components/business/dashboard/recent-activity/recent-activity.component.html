@@ -1,0 +1,383 @@
+<div class="dashboard__content grid__row">
+    <div class="dashboard__content_left grid__left">
+        <dashboard-item class='data-box display_block' [title]='"Card Requests"'>
+
+            <div class='dashboard-item__search'>
+                <div class="input_dashboard-item_wrapper">
+                    <input type="text" class="input input_search" placeholder="Enter customer name">
+                    <img src="../../../../common/images/icons/search.png" alt="" class="search">
+                </div>
+            </div>
+
+            <div class='dashboard-item__body'>
+                <div class="dashboard-item__common">
+                    <div *ngFor='let item of cardRequests' class="dashboard-item__common_item">
+                        <div class="dashboard-item__common_title">
+                            {{item.title}}
+                        </div>
+                        <div class="dashboard-item__common_value bold">
+                            {{item.status}}
+                        </div>
+                        <div class="dashboard-item__common_difference difference" [ngClass]="item.isIncreased ? 'increased' : 'decreased'">
+                            {{item.value}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf='cardRequestsData'>
+                    <h1 class="bold">Open Requests</h1>
+
+                    <div class="dashboard-item__request" *ngFor='let request of cardRequestsData'>
+                        <div class="dashboard-item__request_item common">
+                            <div class='dashboard-item__request_name-wrapper'>
+                                <img *ngIf='request.isExisting' class='star' src="../../../../common/images/icons/star.png" alt="">
+                                <h1>
+                                    {{request.full_name}}
+                                     <span class='score bold'
+                                           [style.color]='cardService.currentCard(request.credit_score).cardColor'>
+                                           {{request.credit_score}}
+                                     </span>
+                                 </h1>
+                            </div>
+                            {{request.date}} <span class='time'>{{request.time}}</span>
+                        </div>
+                        <div class="dashboard-item__request_item">
+                            <h1 class="bold">Amount</h1> {{request.amount | currency:'USD':true}}
+                        </div>
+                        <div class="dashboard-item__request_item">
+                            <img src="../../../../common/images/icons/basket.png" class='dashboard-item__basket' alt="">
+                        </div>
+                        <div class="dashboard-item__request_item">
+                            <div class="dashboard-item__request_item_answer">
+                                <div class="dashboard-item__answer">
+                                    <div class="dashboard-item__answer_button dashboard-item__answer_accept">
+                                        <img src="../../../../common/images/icons/check.png" alt="">
+                                    </div>
+                                    Accept
+                                </div>
+                                <div class="dashboard-item__answer">
+                                    <div class="dashboard-item__answer_button dashboard-item__answer_decline">
+                                        <img src="../../../../common/images/icons/close.png" alt="">
+                                    </div>
+                                    Decline
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button button_primary button_perfect">More</div>
+                </div>
+                <div class='empty' *ngIf='!cardRequestsData'>
+                    Empty now
+                </div>
+            </div>
+
+        </dashboard-item>
+        <dashboard-item class='data-box display_block' [title]='"New Customers"'>
+
+            <div class='dashboard-item__search'>
+                <div class="input_dashboard-item_wrapper">
+                    <input type="text" class="input input_search" placeholder="Enter customer name">
+                    <img src="../../../../common/images/icons/search.png" alt="" class="search">
+                </div>
+            </div>
+
+            <div class='dashboard-item__body'>
+
+                <div class="dashboard-item__common">
+                    <div *ngFor='let item of newCustomers' class="dashboard-item__common_item">
+                        <div class="dashboard-item__common_title">
+                            {{item.title}}
+                        </div>
+                        <div class="dashboard-item__common_value bold">
+                            {{item.status}}
+                        </div>
+                        <div class="dashboard-item__common_difference difference" [ngClass]="item.isIncreased ? 'increased' : 'decreased'">
+                            Credit Limit {{item.value | currency:'USD':true}}
+                        </div>
+                    </div>
+                </div>
+                <div class='border-fix' *ngIf='newCustomersData'>
+                    <div class='dashboard-item__request dashboard-item__request_customer'
+                         *ngFor='let item of newCustomersData'
+                         [routerLink]="['/business/customers/customer', item.customer_id]">
+                        <div class="dashboard-item__request_card">
+                            <img [src]="loadFlatCard(cardService.currentCard(item.score).cardFlatImage)" alt="">
+                            <div class="dashboard-item__request_item common">
+                                <h1>{{item.full_name}}</h1> {{item.date}} <span class='time'>{{item.time}}</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-item__request_item common">
+                            <h1 class="bold text_align_center">Credit Limit</h1>
+                        </div>
+                        <div class="dashboard-item__request_item common">
+                            <h1 class="bold text_align_right">{{item.credit_limit | currency:'USD':true}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class='empty' *ngIf='!newCustomersData'>
+                    Empty now
+                </div>
+                <div class="button button_primary button_perfect" (click)="modalService.open('view-more-customers')">More</div>
+            </div>
+            <modal-window [id]="'view-more-customers'" class="invisible">
+                <h1 class='bold heading_get-access'>All Customers</h1>
+                <div class="recent-activity__view-more">
+                    <table class="table table_view-more odd">
+                        <thead>
+                            <th width='50px'>ID</th>
+                            <th>Customer</th>
+                            <th>Card</th>
+                            <th>Score</th>
+                            <th>Member Since</th>
+                            <th>Credti Limit</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let customerFull of newCustomersDataFull'
+                                (click)="modalService.close('view-more-customers')"
+                                [routerLink]="['/business/customers/customer', customerFull.customer_id]">
+                                <td width='50px'>{{customerFull.customer_id}}</td>
+                                <td>{{customerFull.full_name}}</td>
+                                <td>
+                                    <img [src]="loadFlatCard(cardService.currentCard(customerFull.score).cardFlatImage)" alt="">
+                                </td>
+                                <td>{{customerFull.score}}</td>
+                                <td>{{customerFull.date}}</td>
+                                <td>{{customerFull.credit_limit | currency:'USD':true}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal__close" (click)="modalService.close('view-more-customers')"></div>
+            </modal-window>
+
+        </dashboard-item>
+    </div>
+    <div class="dashboard__content_right grid__right">
+        <dashboard-item class='data-box display_block' [title]='"Payments"'>
+
+            <div class='dashboard-item__search'>
+                <div class="input_dashboard-item_wrapper">
+                    <input type="text" class="input input_search" placeholder="Enter customer name">
+                    <img src="../../../../common/images/icons/search.png" alt="" class="search">
+                </div>
+            </div>
+
+            <div class='dashboard-item__body'>
+
+                <div class="dashboard-item__common">
+                    <div *ngFor='let item of payments' class="dashboard-item__common_item">
+                        <div class="dashboard-item__common_title">
+                            {{item.title}}
+                        </div>
+                        <div class="dashboard-item__common_value bold">
+                            {{item.status | currency:'USD':true}}
+                        </div>
+                        <div class="dashboard-item__common_difference difference" [ngClass]="item.isIncreased ? 'increased' : 'decreased'">
+                            {{item.value}} payments
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf='paymentsData'>
+                    <div class="dashboard-item__request dashboard-item__payment" *ngFor='let payment of paymentsData' [routerLink]="['/business/customers/customer', payment.customer_id]">
+                        <div class="dashboard-item__request_item common">
+                            <h1>{{payment.full_name}}</h1> {{payment.date}} <span class='time'>{{payment.time}}</span>
+                        </div>
+                        <div class="dashboard-item__request_item">
+                            <h1 class='bold'>Credit Score</h1> {{payment.credit_score}}
+                        </div>
+                        <div class="dashboard-item__request_item">
+                            <h1 class="bold">Amount</h1> {{payment.amount | currency:'USD':true}}
+                        </div>
+                    </div>
+                    <div class="button button_primary button_perfect"
+                         (click)="modalService.open('view-more-payments')">
+                             More
+                    </div>
+                </div>
+                <div class='empty' *ngIf='!paymentsData'>
+                    Empty now
+                </div>
+            </div>
+            <modal-window [id]="'view-more-payments'" class="invisible">
+                <h1 class='bold heading_get-access'>All Payments</h1>
+                <div class="recent-activity__view-more">
+                    <table class="table table_view-more odd">
+                        <thead>
+                            <th width='50px'>ID</th>
+                            <th>Customer</th>
+                            <th>Card</th>
+                            <th>Score</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let paymentFull of paymentsDataFull'
+                                (click)="modalService.close('view-more-payments')"
+                                [routerLink]="['/business/customers/customer', paymentFull.customer_id]">
+                                <td width='50px'>{{paymentFull.customer_id}}</td>
+                                <td>{{paymentFull.full_name}}</td>
+                                <td>
+                                    <img [src]="loadFlatCard(cardService.currentCard(paymentFull.credit_score).cardFlatImage)" alt="">
+                                </td>
+                                <td>{{paymentFull.credit_score}}</td>
+                                <td>{{paymentFull.date}} {{paymentFull.time}}</td>
+                                <td>{{paymentFull.amount | currency:'USD':true}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal__close" (click)="modalService.close('view-more-payments')"></div>
+            </modal-window>
+        </dashboard-item>
+        <dashboard-item class='data-box display_block' [title]='"Transactions"'>
+
+            <div class='dashboard-item__search'>
+                <div class="input_dashboard-item_wrapper">
+                    <input type="text" class="input input_search" placeholder="Enter customer name">
+                    <img src="../../../../common/images/icons/search.png" alt="" class="search">
+                </div>
+            </div>
+
+            <div class='dashboard-item__body'>
+                <div class="dashboard-item__common">
+                    <div *ngFor='let item of transactions' class="dashboard-item__common_item">
+                        <div class="dashboard-item__common_title">
+                            {{item.title}}
+                        </div>
+                        <div class="dashboard-item__common_value bold">
+                            {{item.status | currency:'USD':true}}
+                        </div>
+                        <div class="dashboard-item__common_difference difference" [ngClass]="item.isIncreased ? 'increased' : 'decreased'">
+                            {{item.value}} transactions
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf='transactionsData'>
+                    <div class="dashboard-item__request dashboard-item__transaction"
+                        *ngFor='let transaction of transactionsData'
+                        [routerLink]="['/business/customers/customer', transaction.customer_id]">
+                        <div class='dashboard-item__request_name-wrapper'>
+                            <div class="dashboard-item__transaction-product">
+                                <img [src]="loadProduct(transaction.product_image_path)" alt="">
+                            </div>
+                            <div class="dashboard-item__request_item dashboard-item__transaction common">
+                                <h1>{{transaction.customer_full_name}} purchased
+                                    <span class='bold'>{{transaction.product_name}}</span>
+                                </h1>
+                                {{transaction.date}} <span class='time'>{{transaction.time}}</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-item__request_item transaction-value bold">
+                            {{transaction.value | currency:'USD':true}}
+                        </div>
+                    </div>
+                    <div class="button button_primary button_perfect"
+                    (click)="modalService.open('view-more-transactions')">
+                        More
+                    </div>
+
+                </div>
+                <div class='empty' *ngIf='!transactionsData'>
+                    Empty now
+                </div>
+            </div>
+            <modal-window [id]="'view-more-transactions'" class="invisible">
+                <h1 class='bold heading_get-access'>All Transactions</h1>
+                <div class="recent-activity__view-more recent-activity__view-more_lg">
+                    <table class="table table_view-more odd">
+                        <thead>
+                            <th width='50px'>ID</th>
+                            <th width="15%">Customer</th>
+                            <th width="15%">Product</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Method</th>
+                            <th>Total</th>
+                            <th width='50px'>...</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let transactionFull of transactionsDataFull'>
+                                <td width='50px'>{{transactionFull.customer_id}}</td>
+                                <td width="15%">{{transactionFull.customer_full_name}}</td>
+                                <td width="15%">
+                                    <div class='dashboard-item__request_name-wrapper'>
+                                        <div class="dashboard-item__transaction-product">
+                                            <img [src]="loadProduct(transactionFull.product_image_path)" alt="">
+                                        </div>
+                                        {{transactionFull.product_name}}
+                                    </div>
+                                </td>
+                                <td>{{transactionFull.date}} <br> {{transactionFull.time}} </td>
+                                <td>{{transactionFull.type}}</td>
+                                <td>{{transactionFull.status}}</td>
+                                <td>
+                                    <img [src]="loadPaymentImage(transactionFull.method)" class='payment' alt="">
+                                </td>
+                                <td>{{transactionFull.value | currency:'USD':true}}</td>
+                                <td width='50px' (click)="handleRefund(transactionFull.transaction_id)">...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal__close" (click)="modalService.close('view-more-transactions')"></div>
+            </modal-window>
+            <modal-window [id]="'refund'" class="invisible">
+                <h1 class='bold heading_get-access'>All Transactions</h1>
+                <div class="recent-activity__view-more recent-activity__view-more_lg" *ngIf='refundItemData != undefined'>
+
+                    <table class="table table_view-more odd">
+                        <thead>
+                            <th width='50px'>ID</th>
+                            <th width="15%">Customer</th>
+                            <th width="15%">Product</th>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Method</th>
+                            <th>Total</th>
+                            <th width='50px'>...</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width='50px'>{{refundItemData?.customer_id}}</td>
+                                <td width="15%">{{refundItemData?.customer_full_name}}</td>
+                                <td width="15%">
+                                    <div class='dashboard-item__request_name-wrapper'>
+                                        <div class="dashboard-item__transaction-product">
+                                            <img [src]="loadProduct(refundItemData?.product_image_path)" alt="">
+                                        </div>
+                                        {{refundItemData?.product_name}}
+                                    </div>
+                                </td>
+                                <td>{{refundItemData?.date}} <br> {{refundItemData?.time}} </td>
+                                <td>{{refundItemData?.type}}</td>
+                                <td>{{refundItemData?.status}}</td>
+                                <td><img [src]="loadPaymentImage(refundItemData?.method)" class='payment' alt=""></td>
+                                <td>{{refundItemData?.value | currency:'USD':true}}</td>
+                                <td width='50px'></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="refund-process__wrapper">
+                        <div class="refund-process__content">
+                            <div class="input_wrapper_amount">
+                                <label for="amount" class='input__label'>Amount</label>
+                                <input type="text" id='amount' class='input input_common' placeholder="Enter amount">
+                            </div>
+                            <div>
+                                <label for="memo" class='input__label input__label_space'>Memo</label>
+                                <textarea class='input input_textarea' id="memo" placeholder="Enter your message"></textarea>
+                            </div>
+                            <div class="refund-process__controllers">
+                                <div class="button button_grey" (click)='modalService.switch("refund", "view-more-transactions")'>Cancel</div>
+                                <div class="button button_primary">Process Refund</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__close" (click)="modalService.close('refund')"></div>
+            </modal-window>
+
+        </dashboard-item>
+    </div>
+</div>

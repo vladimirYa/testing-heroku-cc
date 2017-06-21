@@ -1,0 +1,37 @@
+.vertical-align-middle(@size, @line-height: @size) when (ispixel(@size)) or (isem(@size)) and (ispixel(@line-height)) or (isem(@line-height)) {
+    height: @size;
+    line-height: @line-height;
+}
+
+.transform-center-x(@position: absolute) {
+    position: @position;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.transform-center-y(@position: absolute) {
+    position: @position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.transform-center(@position: absolute) {
+    position: @position;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.block-margin-center(){
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.block-margin-stick-right(){
+    display: block;
+    margin-left: auto;
+}
+.block-margin-stick-left(){
+    display: block;
+    margin-left: right;
+}

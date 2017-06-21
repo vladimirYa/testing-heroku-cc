@@ -1,0 +1,58 @@
+@import (less) url('../../../../common/mixins/flex-mixins.less');
+:host{
+  position: relative;
+  line-height: 0;
+  display: block;
+}
+.img_building{
+  width: 100%;
+  z-index: 0;
+
+}
+.heading{
+  font-family: 'Assistant', sans-serif;
+  text-align: center;
+  font-size: 35px;
+  font-weight:600;
+  margin: 30px auto;
+  &_history{
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    @media (min-width:1500px) {
+      top: 50px;
+    }
+  }
+}
+.paragraph {
+  font-family: 'Assistant', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight:300;
+  @media (min-width: 1500px) {
+    font-size: 25px;
+    line-height: 45px;
+  }
+}
+.history{
+  &__text{
+    position: absolute;
+    z-index: 10;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    .flex-row-space-between-flex-start();
+    width: 90%;
+    @media (min-width:1500px) {
+      top: 150px;
+    }
+    p{
+      width: 30%;
+      text-align: justify;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import (less) '../../../common/mixins/flex-mixins';
+
+.dashboard{
+    .flex-row-space-between-flex-start();
+    padding-bottom: 20px;
+
+    &-wrapper{
+        padding: 0 10px;
+    }
+    &_left{
+        width: 50%;
+        min-width: 520px;
+        padding-right: 5px;
+    }
+    &_right{
+        width: 50%;
+        min-width: 470px;
+        padding-left: 5px;
+    }
+    &__content{
+        min-height: 50px;
+    }
+}

@@ -1,0 +1,24 @@
+<nav-row></nav-row>
+
+<div class="dashboard">
+
+    <div class="recent-activity">
+        <div class='recent-activity_box'>
+            <div routerLink='recent-activity' routerLinkActive="active" class="bold dashboard__trigger">Recent Activity</div>
+            <div class="recent-activity__bell">
+                <img src="../../../common/images/icons/bell.png" alt="">
+                <div class="recent-activity__number bold">61</div>
+            </div>
+            <div routerLink='cards' routerLinkActive="active" class="bold dashboard__trigger">Сards</div>
+            <div routerLink='customers' routerLinkActive="active" class="bold dashboard__trigger">Сustomers</div>
+        </div>
+        <div class='recent-activity_box'>
+            <div class="input_search-account_wrapper">
+                <input type="text" class="input input_search input_search-account" placeholder="Search account">
+                <img src="../../../common/images/icons/search.png" alt="" class="search">
+            </div>
+            <div class="button button_primary button_search-account">New Account</div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

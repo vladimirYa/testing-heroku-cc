@@ -1,0 +1,18 @@
+<nav-row></nav-row>
+<div class="my-cc">
+    <div class="my-cc__content data-box">
+        <h1 class="bold">My stores</h1>
+        <div class="my-cc__stores-wrapper">
+            <score-line [score]='675' [cards]='cards'>
+            </score-line>
+            <div class="my-cc__stores">
+                <div class="my-cc__stores-section" *ngFor="let storesItem of stores">
+                    <div class="my-cc__store" *ngFor="let store of storesItem">
+                        <img [src]="loadStoreLogo(store.iconPath)" alt="">
+                    </div>
+                    <div class="button button_primary button_size_sm">More</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

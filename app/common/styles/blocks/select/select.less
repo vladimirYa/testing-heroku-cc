@@ -1,0 +1,47 @@
+// @import (less) '../../mixins/mixins';
+.select{
+    min-height: 48px;
+    position: relative;
+    &__list{
+        list-style-type: none;
+        border: 2px solid #7b8da0;
+        max-height: 132px;
+        overflow: auto;
+        position: absolute;
+        width: 100%;
+        box-sizing: border-box;
+        top: 50px;
+        height: auto;
+        transition: 0.3s;
+        opacity: 0;
+        z-index: 10;
+        &.opened{
+            opacity: 1;
+        }
+        &-item{
+            line-height: 1.5;
+            padding: 10px;
+            background-color: #fff;
+            cursor: pointer;
+            &_active{
+                position: relative;
+                border: 2px solid #7b8da0;
+                & > img {
+                    position: absolute;
+                    right: 4px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: 0.3s;
+                }
+                &.opened > img{
+                    transform: rotate(180deg);
+                    margin-top: -5px;
+                }
+            }
+        }
+
+    }
+    .customer__statements &{
+        width: 250px;
+    }
+}

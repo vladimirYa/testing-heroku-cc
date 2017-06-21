@@ -1,0 +1,9 @@
+<div class="data-sector">
+    <h1 class="bold data-sector__data data-sector__heading">{{heading}}</div>
+<div class="data-sector__data data-sector__data_light">{{data?.date}}</div>
+<div class="data-sector__data bold" *ngIf='isValueCurrency'>{{data?.value | currency:'USD':true}}</div>
+<div class="data-sector__data bold" *ngIf='!isValueCurrency'>{{data?.value}}</div>
+<div class="data-sector__data difference" [ngClass]='data?.isIncreased ? "increased" : "decreased"'>
+    {{data?.difference}}
+</div>
+</div>

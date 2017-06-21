@@ -1,0 +1,26 @@
+<nav-row></nav-row>
+<div class="settings">
+    <h1 class="bold settings__heading">Manage your account</h1>
+    <p class="settings__paragraph">On this page you can easily add or edit funding sources.</p>
+    <div class='grid_row'>
+        <div class="grid__left">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="grid__right">
+            <div class="settings__head">
+                <img src="../../../common/images/icons/setting-card.png" alt="">
+                <h1 class='bold settings__head-title'>Add New Funding Source</h1>
+            </div>
+            <div class="data-box">
+                <h1 class='bold'>New Funding Source</h1>
+                <div class="settings__search-wrapper">
+                    <div class="input__search-wrapper">
+                        <input type="text" class="input input_search input_common" placeholder="Enter customer name">
+                        <img src="../../../common/images/icons/search.png" alt="" class="search">
+                    </div>
+                    <div class="button button_primary settings__button-add">Add</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
